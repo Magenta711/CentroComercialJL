@@ -1,0 +1,131 @@
+/*
+    code by Iatek LLC 2018 - CC 2.0 License - Attribution required
+    code customized by Azmind.com
+*/
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Show 4th slide on md if col-md-4*/
+    .carousel-store-inner .active.col-md-4.carousel-store-item + .carousel-store-item + .carousel-store-item + .carousel-store-item {
+        position: absolute;
+        top: 0;
+        right: -33.3333%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+@media (min-width: 576px) and (max-width: 768px) {
+    /* Show 3rd slide on sm if col-sm-6*/
+    .carousel-store-inner .active.col-sm-6.carousel-store-item + .carousel-store-item + .carousel-store-item {
+        position: absolute;
+        top: 0;
+        right: -50%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+@media (min-width: 576px) {
+    .carousel-store-item {
+        margin-right: 0;
+    }
+    /* show 2 items */
+    .carousel-store-inner .active + .carousel-store-item {
+        display: block;
+    }
+    .carousel-store-inner .carousel-store-item.active:not(.carousel-store-item-right):not(.carousel-store-item-left),
+    .carousel-store-inner .carousel-store-item.active:not(.carousel-store-item-right):not(.carousel-store-item-left) + .carousel-store-item {
+        transition: none;
+    }
+    .carousel-store-inner .carousel-store-item-next {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
+    /* left or forward direction */
+    .active.carousel-store-item-left + .carousel-store-item-next.carousel-store-item-left,
+    .carousel-store-item-next.carousel-store-item-left + .carousel-store-item,
+    .carousel-store-item-next.carousel-store-item-left + .carousel-store-item + .carousel-store-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* farthest right hidden item must be also positioned for animations */
+    .carousel-store-inner .carousel-store-item-prev.carousel-store-item-right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    /* right or prev direction */
+    .active.carousel-store-item-right + .carousel-store-item-prev.carousel-store-item-right,
+    .carousel-store-item-prev.carousel-store-item-right + .carousel-store-item,
+    .carousel-store-item-prev.carousel-store-item-right + .carousel-store-item + .carousel-store-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+/* MD */
+@media (min-width: 768px) {
+    /* show 3rd of 3 item slide */
+    .carousel-store-inner .active + .carousel-store-item + .carousel-store-item {
+        display: block;
+    }
+    .carousel-store-inner .carousel-store-item.active:not(.carousel-store-item-right):not(.carousel-store-item-left) + .carousel-store-item + .carousel-store-item {
+        transition: none;
+    }
+    .carousel-store-inner .carousel-store-item-next {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
+    /* left or forward direction */
+    .carousel-store-item-next.carousel-store-item-left + .carousel-store-item + .carousel-store-item + .carousel-store-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* right or prev direction */
+    .carousel-store-item-prev.carousel-store-item-right + .carousel-store-item + .carousel-store-item + .carousel-store-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+/* LG */
+@media (min-width: 991px) {
+    /* show 4th item */
+    .carousel-store-inner .active + .carousel-store-item + .carousel-store-item + .carousel-store-item {
+        display: block;
+    }
+    .carousel-store-inner .carousel-store-item.active:not(.carousel-store-item-right):not(.carousel-store-item-left) + .carousel-store-item + .carousel-store-item + .carousel-store-item {
+        transition: none;
+    }
+    /* Show 5th slide on lg if col-lg-3 */
+    .carousel-store-inner .active.col-lg-3.carousel-store-item + .carousel-store-item + .carousel-store-item + .carousel-store-item + .carousel-store-item {
+        position: absolute;
+        top: 0;
+        right: -25%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    /* left or forward direction */
+    .carousel-store-item-next.carousel-store-item-left + .carousel-store-item + .carousel-store-item + .carousel-store-item + .carousel-store-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* right or prev direction //t - previous slide direction last item animation fix */
+    .carousel-store-item-prev.carousel-store-item-right + .carousel-store-item + .carousel-store-item + .carousel-store-item + .carousel-store-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
