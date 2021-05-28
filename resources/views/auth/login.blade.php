@@ -1,73 +1,114 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/logo-min.png')}}">
+    <title>Elite Admin Template - The Ultimate Multipurpose admin template</title>
+    
+    <!-- page css -->
+    <link href="{{asset('eliteadmin/inverse/dist/css/pages/login-register-lock.css')}}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{asset('eliteadmin/inverse/dist/css/style.min.css')}}" rel="stylesheet">
+</head>
 
+<body class="skin-default card-no-border">
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">CENTRO COMERCIAL JOSE LUIS</p>
+        </div>
+    </div>
+    <section id="wrapper">
+        <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);">
+            <div class="login-box card">
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('login') }}" class="form-horizontal form-material" id="loginform">
                         @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
+                        <h3 class="text-center m-b-20">{{ __('Login') }}</h3>
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input id="email" class="form-control @error('email') is-invalid @enderror" type="email" required="" name="email" value="{{ old('email') }}" placeholder="{{ __('E-Mail Address') }}" autocomplete="email" autofocus>
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                    <span class="form-control-feedback text-danger" role="alert">
+                                        <small>{{ $message }}</small>
                                     </span>
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input id="password" class="form-control @error('password') is-invalid @enderror" type="password" required="" placeholder="{{ __('Password') }}" autocomplete="current-password" name="password">
                             </div>
                         </div>
-
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
+                            <div class="col-md-12">
+                                <div class="d-flex no-block align-items-center">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name="remember" id="customCheck1" {{ old('remember') ? 'checked' : '' }}>
+                                        <label class="custom-control-label" for="customCheck1">{{ __('Remember Me') }}</label>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <a href="javascript:void(0)" id="to-recover" class="text-muted"><i class="fas fa-lock m-r-5"></i> {{ __('Forgot Your Password?') }}</a> 
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
+                        <div class="form-group text-center">
+                            <div class="col-xs-12 p-b-20">
+                                <button class="btn btn-block btn-lg btn-info btn-rounded" type="submit">{{ __('Login') }}</button>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal" id="recoverform" method="POST" action="{{ route('password.email') }}">
+                        @csrf
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <h3>{{ __('Reset Password') }}</h3>
+                                <p class="text-muted">¡{{ __('Send Password Reset Link') }}! </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input  id="email_reset" name="email_reset" class="form-control @error('email_reset') is-invalid @enderror" type="email" required="" placeholder="{{ __('E-Mail Address') }}" autocomplete="email">
+                                @error('email_reset')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group text-center m-t-20">
+                            <div class="col-xs-12">
+                                <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Enviar</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-@endsection
+    </section>
+    
+    <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('eliteadmin/assets/node_modules/popper/popper.min.js')}}"></script>
+    <script src="{{asset('eliteadmin/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript">
+        $(function() {
+            $(".preloader").fadeOut();
+        });
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+        $('#to-recover').on("click", function() {
+            $("#loginform").slideUp();
+            $("#recoverform").fadeIn();
+        });
+    </script>
+</body>
+</html>
