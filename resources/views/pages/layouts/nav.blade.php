@@ -19,6 +19,9 @@
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#signup">CONTÁCTANOS</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{{route('login')}}"><i class="fa fa-user"></i></a>
+                </li>
             </ul>
         </div>
     </div>
