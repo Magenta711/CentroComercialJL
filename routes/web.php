@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', 'pagesController@index')->name('pages');
+Route::get('nosotros','pagesController@about')->name('about');
+Route::get('barbosa','pagesController@barbosa')->name('barbosa');
+Route::get('tiendas','pagesController@estate')->name('estate');
+Route::get('salon_eventos','pagesController@event_room')->name('event_room');
+Route::get('locales','pagesController@local')->name('local');
+Route::get('espacios_publicitarios','pagesController@publicity_place')->name('publicity_place');
