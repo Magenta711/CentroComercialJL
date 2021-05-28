@@ -26,7 +26,7 @@
         </div>
     </div>
     <section id="wrapper">
-        <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);">
+        <div class="login-register" style="background-image:url({{asset('eliteadmin/assets/images/background/login-register.jpg)')}};">
             <div class="login-box card">
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}" class="form-horizontal form-material" id="loginform">
