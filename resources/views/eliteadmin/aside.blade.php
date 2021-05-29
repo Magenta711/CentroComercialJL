@@ -90,7 +90,7 @@
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li>
-                            <a href="index.html">Usuarios</a>
+                            <a href="{{route('users')}}">Usuarios</a>
                         </li>
                         <li>
                             <a href="index2.html">Usuarios eliminados</a>

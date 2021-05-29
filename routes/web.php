@@ -26,5 +26,25 @@ Route::get('salon_eventos','pagesController@event_room')->name('event_room');
 Route::get('locales','pagesController@local')->name('local');
 Route::get('espacios_publicitarios','pagesController@publicity_place')->name('publicity_place');
 
+Route::get('admin/nosotros','admin_pages\aboutController@about')->name('admin_about');
+
+Route::get('admin/barbosa','admin_pages\barbosaController@barbosa')->name('admin_barbosa');
+
+Route::get('admin/tiendas','admin_pages\estateController@estate')->name('admin_estate');
+
+Route::get('admin/servicios/salon_eventos','admin_pages\services_event_roomController@event_room')->name('admin_services_event_room');
+
+Route::get('admin/servicios/locales','admin_pages\servicesLocalController@local')->name('admin_services_local');
+
+Route::get('admin/servicios/espacios_publicitarios','admin_pages\servicesPublicityPlaceController@publicity_place')->name('admin_services_publicity_place');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('usuarios','userController@index')->name('users');
+Route::get('usuarios/create','userController@create')->name('users_create');
+Route::post('usuarios','userController@store')->name('users_store');
+Route::get('usuarios/{id}/edit','userController@edit')->name('users_edit');
+Route::put('usuarios','userController@update')->name('users_update');
+Route::delete('usuarios/{id}','userController@destroy')->name('users_delete');
+
+Route::get('roles','rolController@index')->name('roles');

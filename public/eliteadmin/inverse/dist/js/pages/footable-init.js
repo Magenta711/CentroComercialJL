@@ -52,12 +52,12 @@ $(window).on('load', function() {
 		$editorTitle = $('#editor-title'),
 		ft = FooTable.init('#footable-addrow', {
 			columns: $.get('https://fooplugins.github.io/FooTable/docs/content/columns.json'),
-			rows: $.get('https://fooplugins.github.io/FooTable/docs/content/rows.json'),
+			rows: $.get('http://ccjl.test/api/user'),
 			editing: {
 				addRow: function(){
 					$modal.removeData('row');
 					$editor[0].reset();
-					$editorTitle.text('Add a new row');
+					$editorTitle.text('Crear');
 					$modal.modal('show');
 				},
 				editRow: function(row){
@@ -68,11 +68,11 @@ $(window).on('load', function() {
 					$editor.find('#status').val(values.status);
 					$editor.find('#dob').val(values.dob.format('YYYY-MM-DD'));
 					$modal.data('row', row);
-					$editorTitle.text('Edit row #' + values.id);
+					$editorTitle.text('Editar filas #' + values.id);
 					$modal.modal('show');
 				},
 				deleteRow: function(row){
-					if (confirm('Are you sure you want to delete the row?')){
+					if (confirm('¿Está seguro de eliminar la fila?')){
 						row.delete();
 					}
 				}
