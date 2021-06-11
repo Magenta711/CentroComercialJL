@@ -41,7 +41,7 @@ class userController extends Controller
         $id->update($request->all());
         return redirect()->route('users')->with('success','Se ha actualizado el usuario correctamente');
     }
-    public function destroid(User $id)
+    public function destroy(User $id)
     {
         $id->delete();
         return redirect()->route('users')->with('success','Se ha eliminado el usuario correctamente');

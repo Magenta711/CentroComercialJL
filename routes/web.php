@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,6 +14,13 @@ Route::get('tiendas','pagesController@estate')->name('estate');
 Route::get('salon_eventos','pagesController@event_room')->name('event_room');
 Route::get('locales','pagesController@local')->name('local');
 Route::get('espacios_publicitarios','pagesController@publicity_place')->name('publicity_place');
+
+Route::get('admin/carrucel','admin_pages\sliderController@index')->name('admin_slider');
+Route::get('admin/carrucel/create','admin_pages\sliderController@create')->name('admin_slider.create');
+Route::post('admin/carrucel','admin_pages\sliderController@store')->name('admin_slider.store');
+Route::get('admin/carrucel/{id}','admin_pages\sliderController@edit')->name('admin_slider.edit');
+Route::put('admin/carrucel/{id}','admin_pages\sliderController@store')->name('admin_slider.update');
+Route::delete('admin/carrucel/{id}','admin_pages\sliderController@destroy')->name('admin_slider.delete');
 
 Route::get('admin/nosotros','admin_pages\aboutController@index')->name('admin_about');
 Route::post('admin/nosotros','admin_pages\aboutController@store')->name('admin_about.store');
@@ -44,6 +40,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('usuarios','userController@index')->name('users');
 Route::post('usuarios','userController@store')->name('users.store');
 Route::put('usuarios/{id}','userController@update')->name('users.update');
-Route::delete('usuarios/{id}','userController@destroid')->name('users.delete');
+Route::delete('usuarios/{id}','userController@destroy')->name('users.delete');
 
 Route::get('roles','rolController@index')->name('roles');

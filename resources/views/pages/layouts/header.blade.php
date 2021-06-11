@@ -4,6 +4,8 @@
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -22,6 +24,20 @@
           </div>
           <div class="carousel-item">
             <img class="d-block w-100" src="{{asset('img/pages/3.jpg')}}" alt="Third slide">
+            <!-- <div class="carousel-caption">
+                <h3>Undertake</h3>
+                <p>LA is always so much fun!</p>
+            </div> -->
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="{{asset('img/pages/44.jpg')}}" alt="Third slide">
+            <!-- <div class="carousel-caption">
+                <h3>Undertake</h3>
+                <p>LA is always so much fun!</p>
+            </div> -->
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="{{asset('img/pages/55.jpg')}}" alt="Third slide">
             <!-- <div class="carousel-caption">
                 <h3>Undertake</h3>
                 <p>LA is always so much fun!</p>

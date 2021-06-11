@@ -49,7 +49,7 @@
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li>
-                            <a href="index4.html">Carrusel</a>
+                            <a href="{{route('admin_slider')}}">Carrusel</a>
                         </li>
                         <li>
                             <a href="{{route('admin_about')}}">Nosotros </a>
