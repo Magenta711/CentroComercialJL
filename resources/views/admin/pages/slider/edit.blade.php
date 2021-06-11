@@ -18,14 +18,14 @@
         </div>
     </div>
 </div>
+<form action="{{route('admin_slider.update',1)}}" method="post">
+    @csrf
+    @method('PUT')
 <div class="row">
     <div class="col-md-12">
         <h4 class="card-title">Editar post</h4>
         <h6 class="card-subtitle m-b-20 text-muted">Aquí puedes editar y programar post para el carrusel de entrada de la página</h6>
     </div>
-    <form action="{{route('admin_slider.update',1)}}" method="post">
-        @csrf
-        @method('PUT')
     <div class="col-lg-6 col-md-6">
         <div class="card">
             <div class="card-body">
@@ -66,8 +66,8 @@
             </div>
         </div>
     </div>
-    </form>
 </div>
+</form>
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{asset('eliteadmin/assets/node_modules/dropify/dist/css/dropify.min.css')}}">

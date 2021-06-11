@@ -24,7 +24,7 @@
         <h4 class="card-title">Usuarios</h4>
         <h6 class="card-subtitle">Lista de usuarios</h6>
         <div class="table-responsive m-t-40">
-            <table id="myTable" class="table table-sm table-bordered table-striped">
+            <table id="myTable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Id</th>

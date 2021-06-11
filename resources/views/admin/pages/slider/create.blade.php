@@ -18,9 +18,9 @@
         </div>
     </div>
 </div>
+<form action="{{route('admin_slider.store')}}" method="POST">
+    @csrf
 <div class="row">
-    <form action="{{route('admin_slider.store')}}" method="POST">
-        @csrf
     <div class="col-md-12">
         <h4 class="card-title">Crear post</h4>
         <h6 class="card-subtitle m-b-20 text-muted">Aquí puedes crear y programar post para el carrusel de entrada de la página</h6>
@@ -65,8 +65,8 @@
             </div>
         </div>
     </div>
-    </form>
 </div>
+</form>
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{asset('eliteadmin/assets/node_modules/dropify/dist/css/dropify.min.css')}}">

@@ -72,7 +72,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="waves-effect waves-dark" href="#" aria-expanded="false">
+                    <a class="waves-effect waves-dark" href="{{route('locals')}}" aria-expanded="false">
                         <i class="fa fa-store-alt"></i>
                         <span class="hide-menu">Locales</span>
                     </a>

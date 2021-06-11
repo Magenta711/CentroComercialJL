@@ -16,7 +16,7 @@ Route::get('locales','pagesController@local')->name('local');
 Route::get('espacios_publicitarios','pagesController@publicity_place')->name('publicity_place');
 
 Route::get('admin/carrucel','admin_pages\sliderController@index')->name('admin_slider');
-Route::get('admin/carrucel/create','admin_pages\sliderController@create')->name('admin_slider.create');
+Route::get('admin/carrucel/crear','admin_pages\sliderController@create')->name('admin_slider.create');
 Route::post('admin/carrucel','admin_pages\sliderController@store')->name('admin_slider.store');
 Route::get('admin/carrucel/{id}','admin_pages\sliderController@edit')->name('admin_slider.edit');
 Route::put('admin/carrucel/{id}','admin_pages\sliderController@store')->name('admin_slider.update');
@@ -43,3 +43,9 @@ Route::put('usuarios/{id}','userController@update')->name('users.update');
 Route::delete('usuarios/{id}','userController@destroy')->name('users.delete');
 
 Route::get('roles','rolController@index')->name('roles');
+
+Route::get('admin/locales','localsController@index')->name('locals');
+Route::get('admin/locales/crear','localsController@create')->name('locals.create');
+Route::post('admin/locales','localsController@store')->name('locals.store');
+Route::get('admin/locales/{id}','localsController@edit')->name('locals.edit');
+Route::put('admin/locales','localsController@update')->name('locals.update');
