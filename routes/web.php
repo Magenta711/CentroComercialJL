@@ -40,6 +40,9 @@ Route::get('admin/servicios/espacios_publicitarios','admin_pages\servicesPublici
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::middleware('auth')->middleware('verified')->get('usuarios','userController@index')->name('users');
+Route::get('usuarios','userController@index')->name('users');
+Route::post('usuarios','userController@store')->name('users.store');
+Route::put('usuarios/{id}','userController@update')->name('users.update');
+Route::delete('usuarios/{id}','userController@destroid')->name('users.delete');
 
 Route::get('roles','rolController@index')->name('roles');
