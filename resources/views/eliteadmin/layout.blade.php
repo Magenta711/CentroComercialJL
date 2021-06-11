@@ -39,6 +39,7 @@
     <script src="{{asset('eliteadmin/inverse/dist/js/perfect-scrollbar.jquery.min.js')}}"></script>
     <script src="{{asset('eliteadmin/inverse/dist/js/sidebarmenu.js')}}"></script>
     <script src="{{asset('eliteadmin/inverse/dist/js/custom.min.js')}}"></script>
+    @include('alerts.main')
     @yield('js')
 </body>
 

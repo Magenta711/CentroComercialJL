@@ -67,7 +67,6 @@
 @endsection
 
 @section('js')
-    @include('alerts.main')
     <script src="{{asset('eliteadmin/assets/node_modules/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('eliteadmin/assets/node_modules/datatables.net-bs4/js/dataTables.responsive.min.js')}}"></script>
     <script>

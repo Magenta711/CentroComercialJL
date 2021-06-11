@@ -52,7 +52,7 @@
                             <a href="index4.html">Carrusel</a>
                         </li>
                         <li>
-                            <a href="index.html">Nosotros </a>
+                            <a href="{{route('admin_about')}}">Nosotros </a>
                         </li>
                         <li>
                             <a href="index2.html">Barbosa</a>

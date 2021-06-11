@@ -26,9 +26,10 @@ Route::get('salon_eventos','pagesController@event_room')->name('event_room');
 Route::get('locales','pagesController@local')->name('local');
 Route::get('espacios_publicitarios','pagesController@publicity_place')->name('publicity_place');
 
-Route::get('admin/nosotros','admin_pages\aboutController@about')->name('admin_about');
+Route::get('admin/nosotros','admin_pages\aboutController@index')->name('admin_about');
+Route::post('admin/nosotros','admin_pages\aboutController@store')->name('admin_about.store');
 
-Route::get('admin/barbosa','admin_pages\barbosaController@barbosa')->name('admin_barbosa');
+Route::get('admin/barbosa','admin_pages\barbosaController@index')->name('admin_barbosa');
 
 Route::get('admin/tiendas','admin_pages\estateController@estate')->name('admin_estate');
 
