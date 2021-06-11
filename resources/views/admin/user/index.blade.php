@@ -40,38 +40,24 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group required row">
-                            <label for="firstName" class="col-sm-3 control-label">Nombre</label>
+                            <label for="name" class="col-sm-3 control-label">Nombre</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="firstName"
-                                    name="firstName" placeholder="First Name" required>
+                                <input type="text" class="form-control" id="name"
+                                    name="name" placeholder="Nombre" required>
                             </div>
                         </div>
                         <div class="form-group required row">
-                            <label for="lastName" class="col-sm-3 control-label">Apellido</label>
+                            <label for="email" class="col-sm-3 control-label">Correo</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="lastName"
-                                    name="lastName" placeholder="Last Name" required>
+                                <input type="email" class="form-control" id="email"
+                                    name="email" placeholder="example@mail.com" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="jobTitle" class="col-sm-3 control-label">Trabajo</label>
+                            <label for="password" class="col-sm-3 control-label">Contraseña</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="jobTitle"
-                                    name="jobTitle" placeholder="Job Title">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="dob" class="col-sm-3 control-label">Fecha de cumpleaños</label>
-                            <div class="col-sm-9">
-                                <input type="date" class="form-control" id="dob" name="dob"
-                                    placeholder="Date of Birth">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="status" class="col-sm-3 control-label">Estado</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="status"
-                                    name="status" placeholder="Status Here" required>
+                                <input type="text" class="form-control" id="password"
+                                    name="password" placeholder="Contraseña">
                             </div>
                         </div>
                     </div>

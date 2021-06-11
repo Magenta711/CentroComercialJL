@@ -3,7 +3,7 @@
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Resources\User as UserResource;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +16,6 @@ use App\Http\Resources\User as UserResource;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-Route::get('user',function () {
-    return new UserResource(User::find(1));
-});
+Route::middleware('auth:api')->get('user','userController@list')->name('user.list');
+Route::middleware('auth:api')->get('user_columns','userController@columns')->name('user.columns');
+Route::middleware('auth:api')->post('user','userController@store')->name('user.store');

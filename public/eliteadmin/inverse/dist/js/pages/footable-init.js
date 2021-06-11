@@ -1,5 +1,11 @@
+var api_token = $('meta[name="api-token"]').attr('content');
 
 $(window).on('load', function() {
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
 	// Row Toggler
 	// -----------------------------------------------------------------
 	$('#demo-foo-row-toggler').footable();
@@ -51,8 +57,8 @@ $(window).on('load', function() {
 		$editor = $('#editor'),
 		$editorTitle = $('#editor-title'),
 		ft = FooTable.init('#footable-addrow', {
-			columns: $.get('https://fooplugins.github.io/FooTable/docs/content/columns.json'),
-			rows: $.get('http://ccjl.test/api/user'),
+			columns: $.get('http://ccjl.test/api/user_columns?api_token='.api_token),
+			rows: $.get('http://ccjl.test/api/user?api_token='.api_token),
 			editing: {
 				addRow: function(){
 					$modal.removeData('row');
@@ -62,14 +68,12 @@ $(window).on('load', function() {
 				},
 				editRow: function(row){
 					var values = row.val();
-					$editor.find('#firstName').val(values.firstName);
-					$editor.find('#lastName').val(values.lastName);
-					$editor.find('#jobTitle').val(values.jobTitle);
+					$editor.find('#name').val(values.name);
+					$editor.find('#email').val(values.email);
 					$editor.find('#status').val(values.status);
-					$editor.find('#dob').val(values.dob.format('YYYY-MM-DD'));
 					$modal.data('row', row);
 					$editorTitle.text('Editar filas #' + values.id);
-					$modal.modal('show');
+					$modal.modal('show');		
 				},
 				deleteRow: function(row){
 					if (confirm('¿Está seguro de eliminar la fila?')){
@@ -78,18 +82,19 @@ $(window).on('load', function() {
 				}
 			}
 		}),
-		uid = 10001;
+		uid = 2;
 
 	$editor.on('submit', function(e){
 		if (this.checkValidity && !this.checkValidity()) return;
 		e.preventDefault();
+		date = new Date();
+		addUser();
 		var row = $modal.data('row'),
 			values = {
-				firstName: $editor.find('#firstName').val(),
-				lastName: $editor.find('#lastName').val(),
-				jobTitle: $editor.find('#jobTitle').val(),
-				dob: moment($editor.find('#dob').val(), 'YYYY-MM-DD'),
-				status: $editor.find('#status').val()
+				name: $editor.find('#name').val(),
+				email: $editor.find('#email').val(),
+				created_at: date.getFullYear() + '-' + ( ((parseInt(date.getMonth()) + 1) < 1  ? '0' : '') + parseInt(date.getMonth()) + 1 ) + '-' + ((date.getDate() + 1) < 1  ? '0' : '') + date.getDate(),
+				status: 'Activo'
 			};
 
 		if (row instanceof FooTable.Row){
@@ -101,3 +106,24 @@ $(window).on('load', function() {
 		$modal.modal('hide');
 	});
 });
+
+function addUser() {
+	let form = $("#editor")[0];
+    data = new FormData(form);
+	token = $('#token');
+	$.ajax({
+		type:"post",
+		url : "api/user?api_token=".api_token,
+		data : data,
+		processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 1000000,
+		success: function (response) {
+            console.log('Data-->',response);
+        },
+		error: function (error) {
+            console.log('Error-->',error);
+        }
+	});
+}

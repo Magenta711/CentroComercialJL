@@ -17,13 +17,10 @@ class User extends JsonResource
     {
         return [
             'id' => $this->id,
-            'firstName' => $this->name,
-            'lastName' => $this->email,
-            "something"=> 414197000409,
-            "jobTitle"=> Str::random(10),
-            "started"=> 1367700388909,
-            "dob"=> 183768652128,
-            "status"=> rand(0,1) ? "Active" : "Suspended",
+            'name' => $this->name,
+            'email' => $this->email,
+            "status"=> $this->status ? "Activo" : "Inactivo",
+            "created_at"=> $this->created_at->format('Y-m-d'),
         ];
     }
 }
