@@ -62,14 +62,14 @@
 
 @section('js')
     <script>
-        $('#show-modal').click(function () {
+        $('.show-modal').click(function () {
             Swal.fire({
                 title: "Govinda!",
                 text: "Recently joined twitter",
                 imageUrl: "/eliteadmin/assets/images/big/img1.jpg"
             });
         });
-        $('#delete-modal').click(function () {
+        $('.delete-modal').click(function () {
             Swal.fire({
                 title: '¿Está seguro?',
                 text: "¡Si elimina la imagen no prodrás revertirlo!",
@@ -83,7 +83,7 @@
                 if (result.value) {
                     Swal.fire(
                         'Deleted!',
-                        'Your file has been deleted.',
+                        'El post ha sido eliminado',
                         'success'
                     )
                 }

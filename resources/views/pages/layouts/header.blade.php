@@ -9,14 +9,14 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="{{asset('img/pages/11.jpg')}}" alt="First slide">
+            <img class="d-block w-100" src="{{asset('img/pages/11.JPG')}}" alt="First slide">
             <!-- <div class="carousel-caption">
                 <h3>Start</h3>
                 <p>¡Único centro comercial en Barbosa!</p>
             </div> -->
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="{{asset('img/pages/22.jpg')}}" alt="Second slide">
+            <img class="d-block w-100" src="{{asset('img/pages/22.JPG')}}" alt="Second slide">
             <!-- <div class="carousel-caption">
                 <h3>Grow</h3>
                 <p>LA is always so much fun!</p>

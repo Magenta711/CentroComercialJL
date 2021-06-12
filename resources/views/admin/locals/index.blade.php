@@ -17,27 +17,69 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row el-element-overlay">
     <div class="col-sm-12">
         <h4 class="card-title">Locales</h4>
         <h6 class="card-subtitle">Lista de locales</h6>
     </div>
     <div class="col-lg-3 col-md-6">
         <div class="card">
-            <img class="card-img-top img-responsive" src="{{asset('eliteadmin/assets/images/big/img1.jpg')}}" alt="Card image cap">
-            <div class="card-img-overlay">
-                <h5 class="card-title bg-secondary rounded text-center">Arrendado</h5>
-            </div>
-            <div class="card-body">
-                <h4 class="card-title text-center">Local 101</h4>
-                <div class="text-center">
-                    <a href="#" class="btn waves-effect waves-light btn-outline-primary"><i class="fa fa-eye"></i></a>
-                    <a href="#" class="btn waves-effect waves-light btn-outline-success"><i class="fa fa-edit"></i></a>
-                    <a href="#" class="btn waves-effect waves-light btn-outline-warning"><i class="fa fa-key"></i></a>
-                    <a href="#" class="btn waves-effect waves-light btn-outline-danger"><i class="fa fa-trash"></i></a>
+            <div class="el-card-item">
+                <div class="el-card-avatar el-overlay-1"> <img src="{{asset('eliteadmin/assets/images/big/img1.jpg')}}" alt="user" />
+                    <div class="el-overlay">
+                        <ul class="el-info">
+                            <li>
+                                <a href="{{route('locals.edit',1)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('locals.add',1)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                    <i class="fa fa-key"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a  class="btn default btn-outline image-popup-vertical-fit delete-modal">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+                <div class="el-card-content">
+                    <h3 class="box-title">Local 101</h3> <small>Arrendado</small>
+                    <br/> </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('css')
+    <link href="{{asset('eliteadmin/inverse/dist/css/pages/user-card.css')}}" rel="stylesheet">
+@endsection
+
+@section('js')
+    <script>
+        $('.delete-modal').click(function () {
+            Swal.fire({
+                title: '¿Está seguro?',
+                text: "¡Si elimina la imagen no prodrás revertirlo!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.value) {
+                    Swal.fire(
+                        'Eliminado!',
+                        'El local ha sido eliminado.',
+                        'success'
+                    )
+                }
+            })
+        });
+    </script>
 @endsection

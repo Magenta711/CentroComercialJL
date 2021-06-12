@@ -45,7 +45,11 @@ Route::delete('usuarios/{id}','userController@destroy')->name('users.delete');
 Route::get('roles','rolController@index')->name('roles');
 
 Route::get('admin/locales','localsController@index')->name('locals');
+Route::get('admin/locales/{id}','localsController@show')->name('locals.show');
 Route::get('admin/locales/crear','localsController@create')->name('locals.create');
 Route::post('admin/locales','localsController@store')->name('locals.store');
-Route::get('admin/locales/{id}','localsController@edit')->name('locals.edit');
-Route::put('admin/locales','localsController@update')->name('locals.update');
+Route::get('admin/locales/{id}/editar','localsController@edit')->name('locals.edit');
+Route::put('admin/locales/{id}','localsController@update')->name('locals.update');
+Route::get('admin/locales/{id}/add','localsController@add')->name('locals.add');
+Route::patch('admin/locales/{id}','localsController@save')->name('locals.save');
+Route::delete('admin/locales/{id}/add','localsController@delete')->name('locals.delete');

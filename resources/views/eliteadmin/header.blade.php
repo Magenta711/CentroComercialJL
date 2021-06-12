@@ -4,7 +4,7 @@
         <!-- Logo -->
         <!-- ============================================================== -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="/">
                <b>
                     <img src="{{asset('img/logo-min.png')}}" alt="homepage" class="dark-logo" height="66px" />
                     <img src="{{asset('img/logo-min.png')}}" alt="homepage" class="light-logo" height="66px" />

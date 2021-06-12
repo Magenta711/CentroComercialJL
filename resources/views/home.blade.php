@@ -73,12 +73,12 @@
                     <!-- Carousel items -->
                     <div class="carousel-inner">
                         <div class="active carousel-item">
-                            <div class="overlaybg"><img src="{{asset('img/pages/11.jpg')}}" class="img-fluid" /></div>
+                            <div class="overlaybg"><img src="{{asset('img/pages/11.JPG')}}" class="img-fluid" /></div>
                             {{-- <div class="news-content carousel-caption"><span class="label label-danger label-rounded">Primary</span>
                                 <h4>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</h4> <a href="javascript:void(0)">Read More</a></div> --}}
                         </div>
                         <div class="carousel-item">
-                            <div class="overlaybg"><img src="{{asset('img/pages/22.jpg')}}" /></div>
+                            <div class="overlaybg"><img src="{{asset('img/pages/22.JPG')}}" /></div>
                             {{-- <div class="news-content carousel-caption"><span class="label label-primary label-rounded">Primary</span>
                                 <h4>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</h4> <a href="javascript:void(0)">Read More</a></div> --}}
                         </div>

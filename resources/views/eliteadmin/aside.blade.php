@@ -55,19 +55,19 @@
                             <a href="{{route('admin_about')}}">Nosotros </a>
                         </li>
                         <li>
-                            <a href="index2.html">Barbosa</a>
+                            <a href="#">Barbosa</a>
                         </li>
                         <li>
-                            <a href="index3.html">Cualidades</a>
+                            <a href="#">Cualidades</a>
                         </li>
                         <li>
-                            <a href="index3.html">Tiendas</a>
+                            <a href="#">Tiendas</a>
                         </li>
                         <li>
-                            <a href="index3.html">Servicios</a>
+                            <a href="#">Servicios</a>
                         </li>
                         <li>
-                            <a href="index3.html">Contáctanos</a>
+                            <a href="#">Contáctanos</a>
                         </li>
                     </ul>
                 </li>
@@ -93,10 +93,10 @@
                             <a href="{{route('users')}}">Usuarios</a>
                         </li>
                         <li>
-                            <a href="index2.html">Usuarios eliminados</a>
+                            <a href="#">Usuarios eliminados</a>
                         </li>
                         <li>
-                            <a href="index3.html">Roles</a>
+                            <a href="#">Roles</a>
                         </li>
                     </ul>
                 </li>

@@ -11,14 +11,14 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
                 <li class="breadcrumb-item">Administración de Locales</li>
-                <li class="breadcrumb-item active">Crear</li>
+                <li class="breadcrumb-item active">Editar</li>
             </ol>
         </div>
     </div>
 </div>
 <div class="card">
     <div class="card-body">
-        <div class="card-title">Crear local</div>
+        <div class="card-title">Editar local</div>
         <h6 class="card-subtitle">Todos los campos con * son obligatorios</h6>
         <div class="row">
             <div class="col-md-6">
