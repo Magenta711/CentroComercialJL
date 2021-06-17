@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Local;
+use App\Models\Rent;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class localsController extends Controller
 {
@@ -50,17 +53,36 @@ class localsController extends Controller
         $id->update($request->all());
         return redirect()->route('locals')->with('success','Local '.$request->code.' actualizado');
     }
-    public function add($id)
+    public function add(Local $id)
     {
-        return view('admin.locals.add');
+        $users = User::where('status',1)->get();
+        return view('admin.locals.add',compact('id','users'));
     }
-    public function save(Request $request,$id)
+    public function save(Request $request,Local $id)
     {
-        return $request;
+        $request->validate([
+            'user_id' => ['required'],
+            'brand' => ['required'],
+            'description' => ['required'],
+        ]);
+        if ($request->hasFile('file')){
+            $file = $request->file('file');
+            $name = time().'.'.$file->getClientOriginalExtension();
+            Storage::putFileAs('public/avatar/locals/', $file, $name);
+            $request['avatar'] = $name;
+        }else {
+            $request['avatar'] = 'logo-default.png';
+        }
+        $request['local_id'] = $id->id;
+        Rent::create($request->all());
+        $id->update([ 
+            'status' => 0
+         ]);
+        return redirect()->route('locals')->with('success','Local '.$id->code.' rentado');
     }
     public function destroy(Local $id)
     {
         $id->delete();
-        return redirect()->route('locals')->with('success','Local '.$request->code.' eliminado');
+        return redirect()->route('locals')->with('success','Local '.$id->code.' eliminado');
     }
 }

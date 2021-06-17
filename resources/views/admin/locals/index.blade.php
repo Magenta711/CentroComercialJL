@@ -31,19 +31,26 @@
                             <ul class="el-info">
                                 <li>
                                     <a href="{{route('locals.edit',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('locals.edit',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="{{route('locals.add',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
-                                        <i class="fa fa-key"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn default btn-outline image-popup-vertical-fit delete-modal">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </li>
+                                @if ($item->status)
+                                    <li>
+                                        <a href="{{route('locals.add',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                            <i class="fa fa-key"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="btn default btn-outline image-popup-vertical-fit delete-modal">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
