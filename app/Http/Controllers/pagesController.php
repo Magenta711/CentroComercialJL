@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pages\Page;
 use Illuminate\Http\Request;
 
 class pagesController extends Controller
@@ -10,7 +11,8 @@ class pagesController extends Controller
         return view('pages.index');
     }
     public function about(){
-        return view('pages.about');
+        $id = Page::where('status',1)->first(['about']);
+        return view('pages.about',compact('id'));
     }
     public function barbosa(){
         return view('pages.barbosa');

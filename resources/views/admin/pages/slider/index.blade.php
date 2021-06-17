@@ -32,7 +32,7 @@
                         <div class="el-overlay">
                             <ul class="el-info">
                                 <li>
-                                    <a class="btn default btn-outline image-popup-vertical-fit show-modal">
+                                    <a class="btn default btn-outline image-popup-vertical-fit">
                                         <i class="fa fa-eye"></i>
                                     </a>
                                 </li>
@@ -70,14 +70,6 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
-        });
-        $('.show-modal').click(function () {
-            let srcImg = $(this).parent().parent().parent().parent().children('img').attr('src');
-            Swal.fire({
-                title: "Govinda!",
-                text: "Recently joined twitter",
-                imageUrl: srcImg,
-            });
         });
         $('.delete-modal').click(function () {
             let id = this.id.split('-')[this.id.split('-').length - 1];
