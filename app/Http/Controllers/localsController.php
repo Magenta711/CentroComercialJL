@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Local;
 use Illuminate\Http\Request;
 
 class localsController extends Controller
@@ -12,7 +13,8 @@ class localsController extends Controller
     }
     public function index()
     {
-        return view('admin.locals.index');
+        $locals = Local::get();
+        return view('admin.locals.index',compact('locals'));
     }
     public function create()
     {
@@ -20,15 +22,33 @@ class localsController extends Controller
     }
     public function store(Request $request)
     {
-        return $request;
+        $request->validate([
+            'ubication' => ['required'],
+            'code' => ['required'],
+            'dimensions' => ['required'],
+            'value' => ['required'],
+            'type' => ['required'],
+            'description' => ['required'],
+        ]);
+        Local::create($request->all());
+        return redirect()->route('locals')->with('success','Local '.$request->code.' creado');
     }
-    public function edit($id)
+    public function edit(Local $id)
     {
-        return view('admin.locals.edit');
+        return view('admin.locals.edit',compact('id'));
     }
-    public function update(Request $request,$id)
+    public function update(Request $request,Local $id)
     {
-        return $request;
+        $request->validate([
+            'ubication' => ['required'],
+            'code' => ['required'],
+            'dimensions' => ['required'],
+            'value' => ['required'],
+            'type' => ['required'],
+            'description' => ['required'],
+        ]);
+        $id->update($request->all());
+        return redirect()->route('locals')->with('success','Local '.$request->code.' actualizado');
     }
     public function add($id)
     {
@@ -38,8 +58,9 @@ class localsController extends Controller
     {
         return $request;
     }
-    public function destroy($id)
+    public function destroy(Local $id)
     {
-        
+        $id->delete();
+        return redirect()->route('locals')->with('success','Local '.$request->code.' eliminado');
     }
 }

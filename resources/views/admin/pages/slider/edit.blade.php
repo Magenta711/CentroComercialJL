@@ -80,7 +80,7 @@
             // Basic
             $('.dropify').dropify({
             messages: {
-                default: 'arrastre y suelte un archivo aquí o haga clic',
+                default: 'Arrastre y suelte un archivo aquí o haga clic',
                 replace: 'Arrastra y suelta o haz clic para reemplazar ',
                 remove: 'Eliminar',
                 error: 'Vaya, se agregó algo incorrecto.'

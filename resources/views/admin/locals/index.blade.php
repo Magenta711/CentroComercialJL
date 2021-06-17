@@ -22,36 +22,39 @@
         <h4 class="card-title">Locales</h4>
         <h6 class="card-subtitle">Lista de locales</h6>
     </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="card">
-            <div class="el-card-item">
-                <div class="el-card-avatar el-overlay-1"> <img src="{{asset('eliteadmin/assets/images/big/img1.jpg')}}" alt="user" />
-                    <div class="el-overlay">
-                        <ul class="el-info">
-                            <li>
-                                <a href="{{route('locals.edit',1)}}" class="btn default btn-outline image-popup-vertical-fit">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{route('locals.add',1)}}" class="btn default btn-outline image-popup-vertical-fit">
-                                    <i class="fa fa-key"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a  class="btn default btn-outline image-popup-vertical-fit delete-modal">
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </li>
-                        </ul>
+    @foreach ($locals as $item)
+        <div class="col-lg-3 col-md-6">
+            <div class="card">
+                <div class="el-card-item">
+                    <div class="el-card-avatar el-overlay-1"> <img src="{{asset('eliteadmin/assets/images/big/img1.jpg')}}" alt="user" />
+                        <div class="el-overlay">
+                            <ul class="el-info">
+                                <li>
+                                    <a href="{{route('locals.edit',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('locals.add',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                        <i class="fa fa-key"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="btn default btn-outline image-popup-vertical-fit delete-modal">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="el-card-content">
+                        <h3 class="box-title">Local {{$item->code}}</h3>
+                        <small>{{$item->status ? 'Disponible' : 'Arrendado'}}</small>
                     </div>
                 </div>
-                <div class="el-card-content">
-                    <h3 class="box-title">Local 101</h3> <small>Arrendado</small>
-                    <br/> </div>
             </div>
         </div>
-    </div>
+    @endforeach
 </div>
 @endsection
 
