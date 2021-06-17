@@ -36,6 +36,10 @@ class localsController extends Controller
         Local::create($request->all());
         return redirect()->route('locals')->with('success','Local '.$request->code.' creado');
     }
+    public function show(Local $id)
+    {
+        return view('admin.locals.show',compact('id'));
+    }
     public function edit(Local $id)
     {
         return view('admin.locals.edit',compact('id'));

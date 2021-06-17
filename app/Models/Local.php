@@ -12,4 +12,8 @@ class Local extends Model
     {
         return $this->morphMany(file::class, 'fileble');
     }
+    public function rents()
+    {
+        return $this->hasMany(Rent::class,'local_id','id');
+    }
 }

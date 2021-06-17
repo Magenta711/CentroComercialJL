@@ -30,7 +30,7 @@
                         <div class="el-overlay">
                             <ul class="el-info">
                                 <li>
-                                    <a href="{{route('locals.edit',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                    <a href="{{route('locals.show',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
                                         <i class="fa fa-eye"></i>
                                     </a>
                                 </li>

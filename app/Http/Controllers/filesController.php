@@ -31,7 +31,7 @@ class filesController extends Controller
     public function getType($type)
     {
         if ($type == 1) {
-            return 'App\Models\Locals';
+            return 'App\Models\Local';
         }
     }
 }
