@@ -18,7 +18,7 @@
         </div>
     </div>
 </div>
-<form action="{{route('admin_slider.update',1)}}" method="post">
+<form action="{{route('admin_slider.update',$id->id)}}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 <div class="row">
@@ -31,7 +31,8 @@
             <div class="card-body">
                 <h4 class="card-title">Imagen</h4>
                 <label for="input-file-now">En sugerencia subir una imagen con las dimenciones de 1100*500</label>
-                <input type="file" id="input-file-now" class="dropify" accept="image/*" data-default-file="{{asset('eliteadmin/assets/images/big/img1.jpg')}}" />
+                <input type="file" id="input-file-now" class="dropify" name="file" accept="image/*" data-default-file="{{$id->file->url}}{{$id->file->name}}" />
+                <small>Si no desea reemplazar la imagen, y la elimina o por error ocurre que desaparece, estó no descartará la imagen actual</small>
             </div>
         </div>
     </div>
@@ -39,24 +40,24 @@
         <div class="card">
             <div class="card-body">
                 <div class="form-group">
-                    <label for="">Título</label>
-                    <input type="text" name="" id="" class="form-control">
+                    <label for="title">Título</label>
+                    <input type="text" name="title" id="title" value="{{$id->title}}" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="">Texto</label>
-                    <textarea name="" id="" cols="30" rows="2" class="form-control"></textarea>
+                    <label for="text">Texto</label>
+                    <textarea name="text" id="text" cols="30" rows="2" class="form-control">{{$id->text}}</textarea>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="">Fecha de publicación</label>
-                            <input type="datetime-local" name="" id="" class="form-control">
+                            <label for="startdate">Fecha de publicación</label>
+                            <input type="datetime-local" name="startdate" id="startdate" value="{{date('Y-m-d',strtotime($id->startdate))}}T{{date('h:i',strtotime($id->startdate))}}" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="">Fecha de terminación</label>
-                            <input type="datetime-local" name="" id="" class="form-control">
+                            <label for="enddate">Fecha de terminación</label>
+                            <input type="datetime-local" name="enddate" id="enddate" value="{{date('Y-m-d',strtotime($id->enddate))}}T{{date('h:i',strtotime($id->enddate))}}" class="form-control">
                         </div>
                     </div>
                 </div>

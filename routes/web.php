@@ -19,8 +19,8 @@ Route::get('admin/carrucel','admin_pages\sliderController@index')->name('admin_s
 Route::get('admin/carrucel/crear','admin_pages\sliderController@create')->name('admin_slider.create');
 Route::post('admin/carrucel','admin_pages\sliderController@store')->name('admin_slider.store');
 Route::get('admin/carrucel/{id}','admin_pages\sliderController@edit')->name('admin_slider.edit');
-Route::put('admin/carrucel/{id}','admin_pages\sliderController@store')->name('admin_slider.update');
-Route::delete('admin/carrucel/{id}','admin_pages\sliderController@destroy')->name('admin_slider.delete');
+Route::put('admin/carrucel/{id}','admin_pages\sliderController@update')->name('admin_slider.update');
+Route::post('admin/carrucel/{id}','admin_pages\sliderController@destroy')->name('admin_slider.delete');
 
 Route::get('admin/nosotros','admin_pages\aboutController@index')->name('admin_about');
 Route::post('admin/nosotros','admin_pages\aboutController@store')->name('admin_about.store');

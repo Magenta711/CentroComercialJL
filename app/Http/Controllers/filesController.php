@@ -28,10 +28,32 @@ class filesController extends Controller
             return response()->json(['success'=>'No se examino un archivo']);
         }
     }
+
+    public function reupload(Request $request,$id)
+    {
+        if ($request->hasFile('file')){
+            $file = $request->file('file');
+            $size = $file->getClientSize() / 1000;
+            $name = time().'.'.$file->getClientOriginalExtension();
+            Storage::putFileAs('public/upload/', $file, $name);
+            $id->update([
+                'name' => $name,
+                'size' => $size,
+                'type' => $file->getClientOriginalExtension(),
+            ]);
+            return response()->json(['success'=>'Se subio el archivo correctamente']);
+        }else {
+            return response()->json(['success'=>'No se examino un archivo']);
+        }
+    }
+
     public function getType($type)
     {
         if ($type == 1) {
             return 'App\Models\Local';
+        }
+        if ($type == 2) {
+            return 'App\Models\Pages\Slider';
         }
     }
 }

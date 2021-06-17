@@ -18,7 +18,7 @@
         </div>
     </div>
 </div>
-<form action="{{route('admin_slider.store')}}" method="POST">
+<form action="{{route('admin_slider.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
 <div class="row">
     <div class="col-md-12">
@@ -30,7 +30,7 @@
             <div class="card-body">
                 <h4 class="card-title">Imagen</h4>
                 <label for="input-file-now">En sugerencia subir una imagen con las dimenciones de 1100*500</label>
-                <input type="file" id="input-file-now" class="dropify" accept="image/*" />
+                <input type="file" name="file" id="input-file-now" class="dropify" accept="image/*" />
             </div>
         </div>
     </div>
@@ -38,24 +38,24 @@
         <div class="card">
             <div class="card-body">
                 <div class="form-group">
-                    <label for="">Título</label>
-                    <input type="text" name="" id="" class="form-control">
+                    <label for="title">Título</label>
+                    <input type="text" name="title" id="title" value="{{old('title')}}" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="">Texto</label>
-                    <textarea name="" id="" cols="30" rows="2" class="form-control"></textarea>
+                    <label for="text">Texto</label>
+                    <textarea name="text" id="text" cols="30" rows="2" class="form-control">{{old('text')}}</textarea>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="">Fecha de publicación</label>
-                            <input type="datetime-local" name="" id="" class="form-control">
+                            <label for="startdate">Fecha de publicación</label>
+                            <input type="datetime-local" name="startdate" id="startdate" value="{{old('startdate')}}" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="">Fecha de terminación</label>
-                            <input type="datetime-local" name="" id="" class="form-control">
+                            <label for="enddate">Fecha de terminación</label>
+                            <input type="datetime-local" name="enddate" id="enddate" value="{{old('enddate')}}" class="form-control">
                         </div>
                     </div>
                 </div>

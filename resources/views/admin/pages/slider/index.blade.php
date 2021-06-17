@@ -23,36 +23,40 @@
         <h4 class="card-title">Carusel</h4>
         <h6 class="card-subtitle m-b-20 text-muted">you can make gallery like this</h6>
     </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="card">
-            <div class="el-card-item">
-                <div class="el-card-avatar el-overlay-1"> <img src="{{asset('eliteadmin/assets/images/big/img1.jpg')}}" alt="user" />
-                    <div class="el-overlay">
-                        <ul class="el-info">
-                            <li>
-                                <a class="btn default btn-outline image-popup-vertical-fit show-modal">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{route('admin_slider.edit',1)}}" class="btn default btn-outline image-popup-vertical-fit">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a  class="btn default btn-outline image-popup-vertical-fit delete-modal">
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </li>
-                        </ul>
+    @foreach ($sliders as $item)
+        <div class="col-lg-3 col-md-6">
+            <div class="card">
+                <div class="el-card-item">
+                    <div class="el-card-avatar el-overlay-1">
+                        <img src="{{$item->file->url}}{{$item->file->name}}" alt="user" />
+                        <div class="el-overlay">
+                            <ul class="el-info">
+                                <li>
+                                    <a class="btn default btn-outline image-popup-vertical-fit show-modal">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('admin_slider.edit',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a id="idItem-{{$item->id}}" class="btn default btn-outline image-popup-vertical-fit delete-modal">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="el-card-content">
+                        <h3 class="box-title">{{$item->title}}</h3> <small>{{$item->startdate}}{{ $item->enddate ? ' - '.$item->enddate : '' }}</small>
+                        <br/>
                     </div>
                 </div>
-                <div class="el-card-content">
-                    <h3 class="box-title">Project title</h3> <small>subtitle of project</small>
-                    <br/> </div>
             </div>
         </div>
-    </div>
+    @endforeach
 </div>
 @endsection
 
@@ -62,14 +66,21 @@
 
 @section('js')
     <script>
+         $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $('.show-modal').click(function () {
+            let srcImg = $(this).parent().parent().parent().parent().children('img').attr('src');
             Swal.fire({
                 title: "Govinda!",
                 text: "Recently joined twitter",
-                imageUrl: "/eliteadmin/assets/images/big/img1.jpg"
+                imageUrl: srcImg,
             });
         });
         $('.delete-modal').click(function () {
+            let id = this.id.split('-')[this.id.split('-').length - 1];
             Swal.fire({
                 title: '¿Está seguro?',
                 text: "¡Si elimina la imagen no prodrás revertirlo!",
@@ -81,11 +92,17 @@
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.value) {
-                    Swal.fire(
-                        'Deleted!',
-                        'El post ha sido eliminado',
-                        'success'
-                    )
+                    var jqxhr = $.post('/admin/carrucel/'+id, function name(data) {
+                        $('#idItem-'+id).parent().parent().parent().parent().parent().parent().parent().remove();
+                        Swal.fire(
+                            'Eliminado!',
+                            'El post ha sido eliminado',
+                            'success'
+                        )
+                    })
+                    .fail(function() {
+                        alert( "error" );
+                    });
                 }
             })
         });

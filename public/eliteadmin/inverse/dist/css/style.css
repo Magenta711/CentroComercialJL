@@ -22040,7 +22040,7 @@ File: scss
   .inbox-center a {
     width: 200px; }
   .d-flex {
-    display: block !important; }
+    display: flex !important; }
     .d-flex.no-block {
       display: flex !important; } }
 
