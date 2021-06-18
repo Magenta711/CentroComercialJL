@@ -72,22 +72,27 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="waves-effect waves-dark" href="{{route('locals')}}" aria-expanded="false">
-                        <i class="fa fa-store-alt"></i>
-                        <span class="hide-menu">Locales</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="waves-effect waves-dark" href="#" aria-expanded="false">
-                        <i class="fa fa-calendar-alt"></i>
-                        <span class="hide-menu">Salón de eventos</span>
-                    </a>
-                </li>
-                <li>
                     <a class="waves-effect waves-dark" href="{{route('forms')}}" aria-expanded="false">
                         <i class="fa fa-calendar-alt"></i>
                         <span class="hide-menu">Formularios de contacto</span>
                     </a>
+                </li>
+                <li>
+                    <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                        <i class="fa fa-users"></i>
+                        <span class="hide-menu">Servicios</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li>
+                            <a href="{{route('locals')}}">Locales</a>
+                        </li>
+                        <li>
+                            <a href="#">Salón de eventos</a>
+                        </li>
+                        <li>
+                            <a href="{{route('publicity_place')}}">Espacios publicitarios</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">

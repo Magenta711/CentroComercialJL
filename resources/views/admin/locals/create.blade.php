@@ -73,10 +73,6 @@
             </div>
         </div>
         </form>
-        <div class="row">
-            <div class="col-md-12" id="my-dropzone">
-            </div>
-        </div>
     </div>
     <div class="card-footer">
         <button class="btn btn-sm btn-primary btn-send">Guardar</button>
@@ -84,12 +80,7 @@
 </div>
 @endsection
 
-@section('css')
-    <link href="{{asset('eliteadmin/assets/node_modules/dropzone-master/dist/dropzone.css')}}" rel="stylesheet" type="text/css" />
-@endsection
-
 @section('js')
-    <script src="{{asset('eliteadmin/assets/node_modules/dropzone-master/dist/dropzone.js')}}"></script>
     <script>
         $('.btn-send').click(function () {
             $('#form-main').submit();

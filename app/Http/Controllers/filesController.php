@@ -55,5 +55,8 @@ class filesController extends Controller
         if ($type == 2) {
             return 'App\Models\Pages\Slider';
         }
+        if ($type == 3) {
+            return 'App\Models\Publicity';
+        }
     }
 }

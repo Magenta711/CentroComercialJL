@@ -29,11 +29,7 @@ Route::get('admin/barbosa','admin_pages\barbosaController@index')->name('admin_b
 
 Route::get('admin/tiendas','admin_pages\estateController@estate')->name('admin_estate');
 
-Route::get('admin/servicios/salon_eventos','admin_pages\services_event_roomController@event_room')->name('admin_services_event_room');
-
-Route::get('admin/servicios/locales','admin_pages\servicesLocalController@local')->name('admin_services_local');
-
-Route::get('admin/servicios/espacios_publicitarios','admin_pages\servicesPublicityPlaceController@publicity_place')->name('admin_services_publicity_place');
+Route::get('admin/servicios/salon_eventos','admin_pages\services_event_roomController@index')->name('admin_services_event_room');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -44,17 +40,27 @@ Route::delete('usuarios/{id}','userController@destroy')->name('users.delete');
 
 Route::get('roles','rolController@index')->name('roles');
 
-Route::get('admin/locales','localsController@index')->name('locals');
-Route::get('admin/locales/crear','localsController@create')->name('locals.create');
-Route::post('admin/locales','localsController@store')->name('locals.store');
-Route::get('admin/locales/{id}','localsController@show')->name('locals.show');
-Route::get('admin/locales/{id}/editar','localsController@edit')->name('locals.edit');
-Route::put('admin/locales/{id}','localsController@update')->name('locals.update');
-Route::get('admin/locales/{id}/add','localsController@add')->name('locals.add');
-Route::patch('admin/locales/{id}','localsController@save')->name('locals.save');
-Route::delete('admin/locales/{id}/add','localsController@delete')->name('locals.delete');
+Route::get('admin/servicios/locales','localsController@index')->name('locals');
+Route::get('admin/servicios/locales/crear','localsController@create')->name('locals.create');
+Route::post('admin/servicios/locales','localsController@store')->name('locals.store');
+Route::get('admin/servicios/locales/{id}','localsController@show')->name('locals.show');
+Route::get('admin/servicios/locales/{id}/editar','localsController@edit')->name('locals.edit');
+Route::put('admin/servicios/locales/{id}','localsController@update')->name('locals.update');
+Route::get('admin/servicios/locales/{id}/add','localsController@add')->name('locals.add');
+Route::patch('admin/servicios/locales/{id}','localsController@save')->name('locals.save');
+Route::post('admin/servicios/locales/{id}','localsController@delete')->name('locals.delete');
 
 Route::post('files/{id}/{type}','filesController@upload')->name('files.upload');
 
 Route::get('formularios','formsController@index')->name('forms');
 Route::post('formularios','formsController@store')->name('forms.store');
+
+Route::get('admin/servicios/espacios_publicitarios','publicityPlaceController@index')->name('publicity_place');
+Route::get('admin/servicios/espacios_publicitarios/crear','publicityPlaceController@create')->name('publicity_place.create');
+Route::post('admin/servicios/espacios_publicitarios','publicityPlaceController@store')->name('publicity_place.store');
+Route::get('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@show')->name('publicity_place.show');
+Route::get('admin/servicios/espacios_publicitarios/{id}/editar','publicityPlaceController@edit')->name('publicity_place.edit');
+Route::put('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@update')->name('publicity_place.update');
+Route::get('admin/servicios/espacios_publicitarios/{id}/add','publicityPlaceController@add')->name('publicity_place.add');
+Route::patch('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@save')->name('publicity_place.save');
+Route::post('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@delete')->name('publicity_place.delete');
