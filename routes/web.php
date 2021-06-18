@@ -29,8 +29,6 @@ Route::get('admin/barbosa','admin_pages\barbosaController@index')->name('admin_b
 
 Route::get('admin/tiendas','admin_pages\estateController@estate')->name('admin_estate');
 
-Route::get('admin/servicios/salon_eventos','admin_pages\services_event_roomController@index')->name('admin_services_event_room');
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('usuarios','userController@index')->name('users');
@@ -64,3 +62,5 @@ Route::put('admin/servicios/espacios_publicitarios/{id}','publicityPlaceControll
 Route::get('admin/servicios/espacios_publicitarios/{id}/add','publicityPlaceController@add')->name('publicity_place.add');
 Route::patch('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@save')->name('publicity_place.save');
 Route::post('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@destroy')->name('publicity_place.delete');
+
+Route::get('admin/servicios/salon_eventos','servicesEventRoomController@index')->name('event_room');

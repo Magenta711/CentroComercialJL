@@ -11,9 +11,8 @@
     <meta name="author" content="">    
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/logo-min.png')}}">
     <title>CCJL | HOME</title>
-    <link href="{{asset('eliteadmin/inverse/dist/css/style.min.css')}}" rel="stylesheet">
     @yield('css')
-    <link href="{{asset('eliteadmin/inverse/dist/css/pages/dashboard3.css')}}" rel="stylesheet">
+    <link href="{{asset('eliteadmin/inverse/dist/css/style.min.css')}}" rel="stylesheet">
 </head>
 
 <body class="fixed-layout skin-purple">

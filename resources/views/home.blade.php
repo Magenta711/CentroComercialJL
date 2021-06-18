@@ -128,6 +128,7 @@
 @endsection
 
 @section('css')
+    <link href="{{asset('eliteadmin/inverse/dist/css/pages/dashboard3.css')}}" rel="stylesheet">
     <link href="{{asset('eliteadmin/assets/node_modules/morrisjs/morris.css')}}" rel="stylesheet">
 @endsection
 @section('js')

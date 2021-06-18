@@ -87,7 +87,7 @@
                             <a href="{{route('locals')}}">Locales</a>
                         </li>
                         <li>
-                            <a href="#">Salón de eventos</a>
+                            <a href="{{route('event_room')}}">Salón de eventos</a>
                         </li>
                         <li>
                             <a href="{{route('publicity_place')}}">Espacios publicitarios</a>
