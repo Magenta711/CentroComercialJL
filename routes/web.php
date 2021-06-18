@@ -55,3 +55,6 @@ Route::patch('admin/locales/{id}','localsController@save')->name('locals.save');
 Route::delete('admin/locales/{id}/add','localsController@delete')->name('locals.delete');
 
 Route::post('files/{id}/{type}','filesController@upload')->name('files.upload');
+
+Route::get('formularios','formsController@index')->name('forms');
+Route::post('formularios','formsController@store')->name('forms.store');

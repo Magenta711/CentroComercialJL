@@ -123,7 +123,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title text-white">ESPACIOS PUBLICITARIOS</h5>
                             <!-- <p class="card-text">Variedad de espacios publicitarios para tu marca al precio que puedes pagar.</p> -->
-                            <a href="{{route('publicity_place')}}" class="btn btn-primary">Conocer más</a>
+                            <a href="{{route('publicity_place')}}" class="btn btn-sm btn-primary">Conocer más</a>
                         </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title text-white">LOCALES</h5>
                             <!-- <p class="card-text">Excelente espacios comerciales con locales comerciales y oficinas perfecto para tu emprendimiento.</p> -->
-                            <a href="{{route('local')}}" class="btn btn-primary">Ver todo</a>
+                            <a href="{{route('local')}}" class="btn btn-sm btn-primary">Ver todo</a>
                         </div>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title text-white">SALÓN DE EVENTOS</h5>
                             <!-- <p class="card-text">Terraza y salón de eventos para tus fiestas, eventos sociales y reuniones empresariales</p> -->
-                            <a href="{{route('event_room')}}" class="btn btn-primary">Cotizar</a>
+                            <a href="{{route('event_room')}}" class="btn btn-sm btn-primary">Cotizar</a>
                         </div>
                     </div>
                 </div>

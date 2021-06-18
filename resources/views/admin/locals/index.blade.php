@@ -10,7 +10,7 @@
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
-                <li class="breadcrumb-item active">Administración de Locales</li>
+                <li class="breadcrumb-item active">Administración de locales</li>
             </ol>
             <a href="{{route('locals.create')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Crear
             </a>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="el-card-content">
                         <h3 class="box-title">Local {{$item->code}}</h3>
-                        <small>{{$item->status ? 'Disponible' : 'Arrendado'}}</small>
+                        <span class="badge badge-pill {{$item->status ? 'badge-cyan' : 'badge-primary'}}">{{$item->status ? 'Disponible' : 'Arrendado'}}</span>
                     </div>
                 </div>
             </div>

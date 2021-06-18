@@ -84,6 +84,12 @@
                     </a>
                 </li>
                 <li>
+                    <a class="waves-effect waves-dark" href="{{route('forms')}}" aria-expanded="false">
+                        <i class="fa fa-calendar-alt"></i>
+                        <span class="hide-menu">Formularios de contacto</span>
+                    </a>
+                </li>
+                <li>
                     <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                         <i class="fa fa-users"></i>
                         <span class="hide-menu">Administración de usuarios</span>

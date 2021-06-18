@@ -52,6 +52,13 @@
                         <input type="text" name="brand" id="brand" class="form-control">
                     </div>
                     <div class="form-group">
+                        <label for="category_id">Categoria</label>
+                        <select name="category_id" id="category_id" class="form-control">
+                            <option selected disabled>Selecciona la categoria</option>
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="description">description</label>
                         <textarea name="description" id="description" cols="30" rows="3" class="form-control"></textarea>
                     </div>
