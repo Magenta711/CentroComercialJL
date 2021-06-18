@@ -12,4 +12,8 @@ class Publicity extends Model
     {
         return $this->morphMany(file::class, 'fileble');
     }
+    public function details()
+    {
+        return $this->hasMany(PublicityDetail::class,'publicity_id','id');
+    }
 }

@@ -45,12 +45,12 @@
                                             <i class="fa fa-image"></i>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a class="btn default btn-outline image-popup-vertical-fit delete-modal">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </li>
                                 @endif
+                                <li>
+                                    <a id="idItem-{{$item->id}}" class="btn default btn-outline image-popup-vertical-fit delete-modal">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -71,10 +71,16 @@
 
 @section('js')
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $('.delete-modal').click(function () {
+            let id = this.id.split('-')[this.id.split('-').length - 1];
             Swal.fire({
                 title: '¿Está seguro?',
-                text: "¡Si elimina la imagen no prodrás revertirlo!",
+                text: "¡Si elimina el espacio publicitario no prodrás revertirlo!",
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -83,11 +89,17 @@
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.value) {
-                    Swal.fire(
-                        'Eliminado!',
-                        'El local ha sido eliminado.',
-                        'success'
-                    )
+                        $('#idItem-'+id).parent().parent().parent().parent().parent().parent().parent().remove();
+                    var jqxhr = $.post('/admin/servicios/espacios_publicitarios/'+id, function name(data) {
+                        Swal.fire(
+                            'Eliminado!',
+                            'El espacio publicitario ha sido eliminado',
+                            'success'
+                        )
+                    })
+                    .fail(function() {
+                        alert( "error" );
+                    });
                 }
             })
         });

@@ -79,6 +79,23 @@
     <div class="card-body">
         <div class="card-title">Arrendatarios</div>
         <h6 class="card-subtitle">Historial de rentas</h6>
+        @foreach ($id->details as $item)
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="">Usuario</label>
+                    <p>{{$item->user->name}}</p>
+                </div>
+                <div class="col-md-6">
+                    <label for="">Fecha</label>
+                    <p>{{$item->created_at}}</p>
+                </div>
+                <div class="col-md-12">
+                    <label for="">Descripción</label>
+                    <p>{{$item->description}}</p>
+                </div>
+            </div>
+            <hr>
+        @endforeach
     </div>
 </div>
 @endsection

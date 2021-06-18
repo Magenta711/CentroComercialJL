@@ -48,7 +48,7 @@ Route::get('admin/servicios/locales/{id}/editar','localsController@edit')->name(
 Route::put('admin/servicios/locales/{id}','localsController@update')->name('locals.update');
 Route::get('admin/servicios/locales/{id}/add','localsController@add')->name('locals.add');
 Route::patch('admin/servicios/locales/{id}','localsController@save')->name('locals.save');
-Route::post('admin/servicios/locales/{id}','localsController@delete')->name('locals.delete');
+Route::post('admin/servicios/locales/{id}','localsController@destroy')->name('locals.delete');
 
 Route::post('files/{id}/{type}','filesController@upload')->name('files.upload');
 
@@ -63,4 +63,4 @@ Route::get('admin/servicios/espacios_publicitarios/{id}/editar','publicityPlaceC
 Route::put('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@update')->name('publicity_place.update');
 Route::get('admin/servicios/espacios_publicitarios/{id}/add','publicityPlaceController@add')->name('publicity_place.add');
 Route::patch('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@save')->name('publicity_place.save');
-Route::post('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@delete')->name('publicity_place.delete');
+Route::post('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@destroy')->name('publicity_place.delete');

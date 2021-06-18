@@ -46,7 +46,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="btn default btn-outline image-popup-vertical-fit delete-modal">
+                                        <a id="idItem-{{$item->id}}" class="btn default btn-outline image-popup-vertical-fit delete-modal">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </li>
@@ -70,26 +70,38 @@
 @endsection
 
 @section('js')
-    <script>
-        $('.delete-modal').click(function () {
-            Swal.fire({
-                title: '¿Está seguro?',
-                text: "¡Si elimina la imagen no prodrás revertirlo!",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Eliminar',
-                cancelButtonText: 'Cancelar'
-            }).then((result) => {
-                if (result.value) {
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('.delete-modal').click(function () {
+        let id = this.id.split('-')[this.id.split('-').length - 1];
+        Swal.fire({
+            title: '¿Está seguro?',
+            text: "¡Si elimina el local no prodrás revertirlo!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.value) {
+                    $('#idItem-'+id).parent().parent().parent().parent().parent().parent().parent().remove();
+                var jqxhr = $.post('/admin/servicios/locales/'+id, function name(data) {
                     Swal.fire(
                         'Eliminado!',
-                        'El local ha sido eliminado.',
+                        'El local ha sido eliminado',
                         'success'
                     )
-                }
-            })
-        });
-    </script>
+                })
+                .fail(function() {
+                    alert( "error" );
+                });
+            }
+        })
+    });
+</script>
 @endsection

@@ -88,6 +88,6 @@ class localsController extends Controller
     public function destroy(Local $id)
     {
         $id->delete();
-        return redirect()->route('locals')->with('success','Local '.$id->code.' eliminado');
+        return response()->json([ 'success'=>'Local eliminado' ]);
     }
 }
