@@ -116,12 +116,12 @@
 @endsection
 
 @section('css')
-    <link href="{{asset('eliteadmin/assets/node_modules/Magnific-Popup-master/dist/magnific-popup.css')}}" rel="stylesheet">
+    <link href="{{asset('eliteadmin/assets/node_modules/magnific-popup/dist/magnific-popup.css')}}" rel="stylesheet">
     <link href="{{asset('eliteadmin/inverse/dist/css/pages/user-card.css')}}" rel="stylesheet">
 @endsection
 
 @section('js')
-    <script src="{{asset('eliteadmin/assets/node_modules/Magnific-Popup-master/dist/jquery.magnific-popup.js')}}"></script>
+    <script src="{{asset('eliteadmin/assets/node_modules/magnific-popup/dist/jquery.magnific-popup.js')}}"></script>
     <script>
         $(document).ready(function() {
             $('.el-card-avatar').magnificPopup({

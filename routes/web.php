@@ -63,4 +63,4 @@ Route::get('admin/servicios/espacios_publicitarios/{id}/add','publicityPlaceCont
 Route::patch('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@save')->name('publicity_place.save');
 Route::post('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@destroy')->name('publicity_place.delete');
 
-Route::get('admin/servicios/salon_eventos','servicesEventRoomController@index')->name('event_room');
+Route::get('admin/servicios/salon_eventos','eventRoomController@index')->name('event_room');
