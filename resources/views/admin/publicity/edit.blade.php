@@ -27,7 +27,7 @@
     <div class="col-lg-6 col-md-6">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Logo</h4>
+                <h4 class="card-title">Avatar</h4>
                 <label for="input-file-now">En sugerencia subir una imagen con las dimenciones de 2:2 y fondo blanco</label>
                 <input type="file" name="file" id="input-file-now" class="dropify" accept="image/*" data-default-file="/storage/avatar/publicity_place/{{$id->avatar}}" />
             </div>
@@ -95,7 +95,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{asset('eliteadmin/assets/node_modules/dropify/dist/css/dropify.min.css')}}">
-    <link href="{{asset('eliteadmin/assets/node_modules/dropzone-master/dist/dropzone.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('eliteadmin/assets/node_modules/dropzone/dist/dropzone.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('js')
@@ -140,7 +140,7 @@
         });
     </script>
 
-        <script src="{{asset('eliteadmin/assets/node_modules/dropzone-master/dist/dropzone.js')}}"></script>
+        <script src="{{asset('eliteadmin/assets/node_modules/dropzone/dist/dropzone.js')}}"></script>
         <script>
             Dropzone.options.myAwesomeDropzone = {
                 dictDefaultMessage: 'Carga los archivos aquí o de clic',

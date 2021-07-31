@@ -50,7 +50,7 @@ Route::post('admin/servicios/locales/{id}','localsController@destroy')->name('lo
 
 Route::post('files/{id}/{type}','filesController@upload')->name('files.upload');
 
-Route::get('formularios','formsController@index')->name('forms');
+Route::get('formularios','formsController@index')->name('forms')->middleware('auth')->middleware('verified');
 Route::post('formularios','formsController@store')->name('forms.store');
 
 Route::get('admin/servicios/espacios_publicitarios','publicityPlaceController@index')->name('publicity_place');

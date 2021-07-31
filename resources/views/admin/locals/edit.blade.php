@@ -92,11 +92,11 @@
 @endsection
 
 @section('css')
-    <link href="{{asset('eliteadmin/assets/node_modules/dropzone-master/dist/dropzone.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('eliteadmin/assets/node_modules/dropzone/dist/dropzone.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('js')
-    <script src="{{asset('eliteadmin/assets/node_modules/dropzone-master/dist/dropzone.js')}}"></script>
+    <script src="{{asset('eliteadmin/assets/node_modules/dropzone/dist/dropzone.js')}}"></script>
     <script>
         Dropzone.options.myAwesomeDropzone = {
             dictDefaultMessage: 'Carga los archivos aquí o de clic',

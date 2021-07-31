@@ -43,14 +43,14 @@
                             <td>{{$item->email}}</td>
                             <td>
                                 <span class="badge badge-pill {{$item->type == 'admin' ? 'badge-cyan' : 'badge-primary'}}  text-white ml-auto">
-                                    {{$item->type == 'admin' ? 'Administrador' : 'Rendatario'}}
+                                    {{$item->isAdmin() ? 'Administrador' : 'Rendatario'}}
                                 </span>
                             </td>
                             <td>{{$item->email_verified_at}}</td>
                             <td>
                                 <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#edit-user-modal-{{$item->id}}"><i class="fa fa-edit"></i></button>
                                 @include('admin.user.includes.modals.edit')
-                                <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#delete-user-modal"><i class="fa fa-trash"></i></button>
+                                <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#delete-user-modal-{{$item->id}}"><i class="fa fa-trash"></i></button>
                                 @include('admin.user.includes.modals.delete')
                             </td>
                         </tr>

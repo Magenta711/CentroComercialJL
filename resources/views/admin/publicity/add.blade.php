@@ -11,7 +11,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
                 <li class="breadcrumb-item">Administración de espacios publicitarios</li>
-                <li class="breadcrumb-item active">Crear</li>
+                <li class="breadcrumb-item active">Arrendar</li>
             </ol>
         </div>
     </div>
@@ -21,10 +21,10 @@
     @method('PATCH')
     <div class="card">
         <div class="card-body">
-            <div class="card-title">Crear espacio publicitario</div>
+            <div class="card-title">Arendar espacio publicitario</div>
             <h6 class="card-subtitle">Todos los campos con * son obligatorios</h6>
             <div class="form-group">
-                <label for="user_id">Usuario</label>
+                <label for="user_id">Usuario *</label>
                 <select name="user_id" id="user_id" class="form-control">
                     <option selected disabled>Selecciona el usuario</option>
                     @foreach ($users as $item)
@@ -33,7 +33,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="description">Descripción</label>
+                <label for="description">Descripción *</label>
                 <textarea name="description" id="description" cols="30" rows="3" class="form-control"></textarea>
             </div>
         </div>

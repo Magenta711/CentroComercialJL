@@ -44,7 +44,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="publish">Página de espacios publicitarios</label>
-                            {{ $id->publish ? 'checked' : '' }}>
+                            <p>{{ $id->publish ? 'Si' : 'No' }}</p>
                             <br>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <h4 class="card-title">Logo</h4>
+                <h4 class="card-title">Avatar</h4>
                 <img src="/storage/avatar/publicity_place/{{$id->avatar}}" alt="{{$id->avatar}}" class="img-thumbnail rounded-circle">
             </div>
             <div class="col-md-12">
@@ -101,12 +101,12 @@
 @endsection
 
 @section('css')
-    <link href="{{asset('eliteadmin/assets/node_modules/Magnific-Popup-master/dist/magnific-popup.css')}}" rel="stylesheet">
+    <link href="{{asset('eliteadmin/assets/node_modules/magnific-popup/dist/magnific-popup.css')}}" rel="stylesheet">
     <link href="{{asset('eliteadmin/inverse/dist/css/pages/user-card.css')}}" rel="stylesheet">
 @endsection
 
 @section('js')
-    <script src="{{asset('eliteadmin/assets/node_modules/Magnific-Popup-master/dist/jquery.magnific-popup.js')}}"></script>
+    <script src="{{asset('eliteadmin/assets/node_modules/magnific-popup/dist/jquery.magnific-popup.js')}}"></script>
     <script>
         $(document).ready(function() {
             $('.el-card-avatar').magnificPopup({

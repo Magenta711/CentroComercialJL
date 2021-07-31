@@ -26,7 +26,7 @@
     <div class="col-lg-6 col-md-6">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Logo</h4>
+                <h4 class="card-title">Avatar</h4>
                 <label for="input-file-now">En sugerencia subir una imagen con las dimenciones de 2:2 y fondo blanco</label>
                 <input type="file" name="file" id="input-file-now" class="dropify" accept="image/*" />
             </div>

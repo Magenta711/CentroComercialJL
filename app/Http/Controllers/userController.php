@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\User as UserResource;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class userController extends Controller
@@ -28,6 +29,7 @@ class userController extends Controller
         ]);
         $request['status'] = 1;
         $request['api_token'] = Str::random(15);
+        $request['password'] = Hash::make($request->password);
         User::create($request->all());
         return redirect()->route('users')->with('success','Se ha creado el usuario correctamente');
     }

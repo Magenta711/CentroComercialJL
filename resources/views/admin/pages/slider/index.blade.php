@@ -32,7 +32,7 @@
                         <div class="el-overlay">
                             <ul class="el-info">
                                 <li>
-                                    <a class="btn default btn-outline image-popup-vertical-fit">
+                                    <a class="btn default btn-outline image-popup-vertical-fit show-modal">
                                         <i class="fa fa-eye"></i>
                                     </a>
                                 </li>
@@ -50,7 +50,8 @@
                         </div>
                     </div>
                     <div class="el-card-content">
-                        <h3 class="box-title">{{$item->title}}</h3> <small>{{$item->startdate}}{{ $item->enddate ? ' - '.$item->enddate : '' }}</small>
+                        <h3 class="box-title">{{$item->title}}</h3> <small class="date">{{$item->startdate}}{{ $item->enddate ? ' - '.$item->enddate : '' }}</small>
+                        <div class="hide">{{$item->text}}</div>
                         <br/>
                     </div>
                 </div>
@@ -70,6 +71,19 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
+        });
+        $('.show-modal').click(function () {
+            let src = $(this).parent().parent().parent().parent().children('img').attr('src');
+            let title = $(this).parent().parent().parent().parent().parent().children('.el-card-content').children('.box-title').text();
+            let date = $(this).parent().parent().parent().parent().parent().children('.el-card-content').children('.date').text();
+            let text = $(this).parent().parent().parent().parent().parent().children('.el-card-content').children('.hide').text();
+            
+            Swal.fire({
+                title: title,
+                text: text,
+                footer: date,
+                imageUrl: src
+            });
         });
         $('.delete-modal').click(function () {
             let id = this.id.split('-')[this.id.split('-').length - 1];
