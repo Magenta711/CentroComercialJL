@@ -19,11 +19,11 @@
                         <input type="email" class="form-control" id="mail" name="email" value="{{$item->email}}" placeholder="example@mail.com">
                     </div>
                     <div class="form-group">
-                        <label for="type" class="control-label">Tipo de usuario</label>
-                        <select name="type" id="type" class="form-control">
-                            <option disabled selected> Selecciona el tipo de usuario</option>
-                            <option {{$item->type == 'admin' ? 'selected' : ''}} value="admin"> Administrador</option>
-                            <option {{$item->type == 'lessee' ? 'selected' : ''}} value="lessee"> Rendatario</option>
+                        <label for="roles" class="control-label">Rol</label>
+                        <select name="roles[]" id="roles" class="select2 m-b-10 select2-multiple" style="width: 100%" multiple="multiple" data-placeholder="Choose">
+                            @foreach ($roles as $role)
+                                <option {{$item->hasRole($role->name) ? 'selected' : ''}} value="{{$role->id}}"> {{$role->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

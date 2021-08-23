@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use App\Http\Resources\User as UserResource;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -17,7 +17,8 @@ class userController extends Controller
     public function index()
     {
         $users = User::where('status',1)->get();
-        return view('admin.user.index',compact('users'));
+        $roles = Role::get();
+        return view('admin.user.index',compact('users','roles'));
     }
     public function store(Request $request)
     {
@@ -25,12 +26,16 @@ class userController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8'],
-            'type' => ['required', 'string'],
+            'roles' => ['required'],
         ]);
         $request['status'] = 1;
         $request['api_token'] = Str::random(15);
         $request['password'] = Hash::make($request->password);
-        User::create($request->all());
+        $user = User::create($request->all());
+        $user->assignRole($request->roles);
+        // Gate::after(function ($user, $ability) {
+        //     return $user->hasRole('Super Admin'); // note this returns boolean
+        //  });
         return redirect()->route('users')->with('success','Se ha creado el usuario correctamente');
     }
     public function update(Request $request,User $id)
@@ -38,9 +43,10 @@ class userController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$id->id],
-            'type' => ['required', 'string'],
+            'roles' => ['required'],
         ]);
         $id->update($request->all());
+        $id->assignRole($request->roles);
         return redirect()->route('users')->with('success','Se ha actualizado el usuario correctamente');
     }
     public function destroy(User $id)

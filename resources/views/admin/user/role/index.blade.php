@@ -10,48 +10,48 @@
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
-                <li class="breadcrumb-item active">Administración de usuarios</li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Administración de usuarios</a></li>
+                <li class="breadcrumb-item active">Roles y permisos</li>
             </ol>
-            <button type="button" class="btn btn-info d-none d-lg-block m-l-15" alt="default" data-toggle="modal" data-target="#create-user-modal"><i class="fa fa-plus-circle"></i> Crear
+            <button type="button" class="btn btn-info d-none d-lg-block m-l-15" alt="default" data-toggle="modal" data-target="#create-role-modal"><i class="fa fa-plus-circle"></i> Crear
             </button>
-            @include('admin.user.includes.modals.create')
+            @include('admin.user.role.includes.modals.create')
         </div>
     </div>
 </div>
 
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Usuarios</h4>
-        <h6 class="card-subtitle">Lista de usuarios</h6>
+        <h4 class="card-title">Roles</h4>
+        <h6 class="card-subtitle">Lista de roles</h6>
+        <p>
+            @role('Superadmin')
+                I am a super-admin!
+            @else
+                I am not a super-admin...
+            @endrole
+        </p>
         <div class="table-responsive m-t-40">
             <table id="myTable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Nombre</th>
-                        <th>Correo</th>
-                        <th>Tipo</th>
-                        <th>Fecha confirmación</th>
+                        <th>Permisos</th>
                         <th>/</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $item)
+                    @foreach ($roles as $item)
                         <tr>
                             <td>{{$item->id}}</td>
                             <td>{{$item->name}}</td>
-                            <td>{{$item->email}}</td>
+                            <td>{{ count($item->permissions) }}</td>
                             <td>
-                                <span class="badge badge-pill {{$item->type == 'admin' ? 'badge-cyan' : 'badge-primary'}}  text-white ml-auto">
-                                    {{$item->isAdmin() ? 'Administrador' : 'Rendatario'}}
-                                </span>
-                            </td>
-                            <td>{{$item->email_verified_at}}</td>
-                            <td>
-                                <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#edit-user-modal-{{$item->id}}"><i class="fa fa-edit"></i></button>
-                                @include('admin.user.includes.modals.edit')
-                                <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#delete-user-modal-{{$item->id}}"><i class="fa fa-trash"></i></button>
-                                @include('admin.user.includes.modals.delete')
+                                <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#edit-role-modal-{{$item->id}}"><i class="fa fa-edit"></i></button>
+                                @include('admin.user.role.includes.modals.edit')
+                                <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#delete-role-modal-{{$item->id}}"><i class="fa fa-trash"></i></button>
+                                @include('admin.user.role.includes.modals.delete')
                             </td>
                         </tr>
                     @endforeach
@@ -64,13 +64,11 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('eliteadmin/assets/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('eliteadmin/assets/node_modules/datatables.net-bs4/css/responsive.dataTables.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('eliteadmin/assets/node_modules/select2/dist/css/select2.min.css')}}">
 @endsection
 
 @section('js')
     <script src="{{asset('eliteadmin/assets/node_modules/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('eliteadmin/assets/node_modules/datatables.net-bs4/js/dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('eliteadmin/assets/node_modules/select2/dist/js/select2.full.min.js')}}"></script>
     <script>
         $(function () {
             $('#myTable').DataTable();
@@ -99,8 +97,14 @@
                     });
                 }
             });
-            $(".select2").select2();
+            $('.item-permit').click(function () {
+                let item = $(this).children();
+                if (item.is(':checked')) {
+                    let item = $(this).parent().addClass('active');
+                }else{
+                    let item = $(this).parent().removeClass('active');
+                }
+            });
         });
-
     </script>
 @endsection

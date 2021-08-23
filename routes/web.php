@@ -36,7 +36,10 @@ Route::post('usuarios','userController@store')->name('users.store');
 Route::put('usuarios/{id}','userController@update')->name('users.update');
 Route::delete('usuarios/{id}','userController@destroy')->name('users.delete');
 
-Route::get('roles','rolController@index')->name('roles');
+Route::get('roles','roleController@index')->name('roles');
+Route::post('roles','roleController@store')->name('roles.store');
+Route::put('roles/{id}','roleController@update')->name('roles.update');
+Route::delete('roles/{id}','roleController@destroy')->name('roles.delete');
 
 Route::get('admin/servicios/locales','localsController@index')->name('locals');
 Route::get('admin/servicios/locales/crear','localsController@create')->name('locals.create');

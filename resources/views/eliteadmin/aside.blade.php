@@ -108,7 +108,7 @@
                                 <a href="#">Usuarios eliminados</a>
                             </li>
                             <li>
-                                <a href="#">Roles</a>
+                                <a href="{{route('roles')}}">Roles</a>
                             </li>
                         </ul>
                     </li>
