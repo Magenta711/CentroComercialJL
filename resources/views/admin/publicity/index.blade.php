@@ -19,8 +19,8 @@
 </div>
 <div class="row el-element-overlay">
     <div class="col-sm-12">
-        <h4 class="card-title">Locales</h4>
-        <h6 class="card-subtitle">Lista de locales</h6>
+        <h4 class="card-title">Espacios publicitarios</h4>
+        <h6 class="card-subtitle">Lista de espacios publicitarios</h6>
     </div>
     @foreach ($publicities as $item)
         <div class="col-lg-3 col-md-6">

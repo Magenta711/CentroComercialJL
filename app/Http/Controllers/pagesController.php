@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pages\Page;
+use App\Models\Rent;
 use Illuminate\Http\Request;
 
 class pagesController extends Controller
@@ -18,7 +19,8 @@ class pagesController extends Controller
         return view('pages.barbosa');
     }
     public function estate(){
-        return view('pages.estate');
+        $estates = Rent::where('status',1)->get();
+        return view('pages.estate',compact('estates'));
     }
     public function event_room(){
         return view('pages.event_room');

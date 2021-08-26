@@ -12,9 +12,10 @@
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
                 <li class="breadcrumb-item active">Administración de usuarios</li>
             </ol>
-            <button type="button" class="btn btn-info d-none d-lg-block m-l-15" alt="default" data-toggle="modal" data-target="#create-user-modal"><i class="fa fa-plus-circle"></i> Crear
-            </button>
-            @include('admin.user.includes.modals.create')
+            @can('Crear usuarios')
+                <button type="button" class="btn btn-info d-none d-lg-block m-l-15" alt="default" data-toggle="modal" data-target="#create-user-modal"><i class="fa fa-plus-circle"></i> Crear</button>
+                @include('admin.user.includes.modals.create')
+            @endcan
         </div>
     </div>
 </div>
@@ -30,7 +31,7 @@
                         <th>Id</th>
                         <th>Nombre</th>
                         <th>Correo</th>
-                        <th>Tipo</th>
+                        <th>Rol</th>
                         <th>Fecha confirmación</th>
                         <th>/</th>
                     </tr>
@@ -42,16 +43,22 @@
                             <td>{{$item->name}}</td>
                             <td>{{$item->email}}</td>
                             <td>
-                                <span class="badge badge-pill {{$item->type == 'admin' ? 'badge-cyan' : 'badge-primary'}}  text-white ml-auto">
-                                    {{$item->isAdmin() ? 'Administrador' : 'Rendatario'}}
-                                </span>
+                                @foreach ($item->getRoleNames() as $role)
+                                    <span class="badge badge-pill badge-primary  text-white ml-auto">
+                                        {{$role}}
+                                    </span>
+                                @endforeach
                             </td>
                             <td>{{$item->email_verified_at}}</td>
                             <td>
-                                <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#edit-user-modal-{{$item->id}}"><i class="fa fa-edit"></i></button>
-                                @include('admin.user.includes.modals.edit')
-                                <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#delete-user-modal-{{$item->id}}"><i class="fa fa-trash"></i></button>
-                                @include('admin.user.includes.modals.delete')
+                                @can('Editar usuarios')
+                                    <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#edit-user-modal-{{$item->id}}"><i class="fa fa-edit"></i></button>
+                                    @include('admin.user.includes.modals.edit')
+                                @endcan
+                                @can('Eliminar usuarios')
+                                    <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#delete-user-modal-{{$item->id}}"><i class="fa fa-trash"></i></button>
+                                    @include('admin.user.includes.modals.delete')
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

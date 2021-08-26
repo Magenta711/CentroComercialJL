@@ -44,9 +44,9 @@
                             <td>{{$item->created_at}}</td>
                             <td>
                                 <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#edit-user-modal-{{$item->id}}"><i class="fa fa-check"></i></button>
-                                @include('admin.user.includes.modals.edit')
+                                {{-- @include('admin.user.includes.modals.edit') --}}
                                 <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#delete-user-modal"><i class="fa fa-trash"></i></button>
-                                @include('admin.user.includes.modals.delete')
+                                {{-- @include('admin.user.includes.modals.delete') --}}
                             </td>
                         </tr>
                     @endforeach

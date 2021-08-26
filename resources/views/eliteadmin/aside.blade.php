@@ -39,7 +39,7 @@
                         <span class="hide-menu">Inicio</span>
                     </a>
                 </li>
-                @if (auth()->user()->isAdmin())
+                {{-- @if (auth()->user()->isAdmin()) --}}
                     <li class="nav-small-cap">--- Administración</li>
                     <li>
                         <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
@@ -101,9 +101,11 @@
                             <span class="hide-menu">Administración de usuarios</span>
                         </a>
                         <ul aria-expanded="false" class="collapse">
-                            <li>
-                                <a href="{{route('users')}}">Usuarios</a>
-                            </li>
+                            @if (auth()->user()->hasAnyPermission(['Lista de usuarios','Crear usuarios', 'Editar usuarios', 'Eliminar usuarios']))
+                                <li>
+                                    <a href="{{route('users')}}">Usuarios</a>
+                                </li>
+                            @endif
                             <li>
                                 <a href="#">Usuarios eliminados</a>
                             </li>
@@ -112,8 +114,14 @@
                             </li>
                         </ul>
                     </li>
-                @endif
-                @if (!auth()->user()->isAdmin())
+                    <li>
+                        <a class="waves-effect waves-dark" href="{{route('admin_rents')}}" aria-expanded="false">
+                            <i class="fa fa-calendar-alt"></i>
+                            <span class="hide-menu">Administración de rentas</span>
+                        </a>
+                    </li>
+                {{-- @endif --}}
+                {{-- @if (!auth()->user()->isAdmin()) --}}
                     <li class="nav-small-cap">--- Principal</li>
                     <li>
                         <a class="waves-effect waves-dark" href="{{route('home')}}" aria-expanded="false">
@@ -130,10 +138,16 @@
                     <li>
                         <a class="waves-effect waves-dark" href="{{route('home')}}" aria-expanded="false">
                             <i class="fa fa-home"></i>
-                            <span class="hide-menu">Espacios publicitarios</span>
+                            <span class="hide-menu">Galeria</span>
                         </a>
                     </li>
-                @endif
+                    <li>
+                        <a class="waves-effect waves-dark" href="{{route('home')}}" aria-expanded="false">
+                            <i class="fa fa-home"></i>
+                            <span class="hide-menu">Eventos</span>
+                        </a>
+                    </li>
+                {{-- @endif --}}
             </li>
             </ul>
         </nav>

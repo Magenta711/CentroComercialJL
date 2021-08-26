@@ -19,8 +19,8 @@
                         <input type="email" class="form-control" id="mail" name="email" value="{{$item->email}}" placeholder="example@mail.com">
                     </div>
                     <div class="form-group">
-                        <label for="roles" class="control-label">Rol</label>
-                        <select name="roles[]" id="roles" class="select2 m-b-10 select2-multiple" style="width: 100%" multiple="multiple" data-placeholder="Choose">
+                        <label>Rol</label>
+                        <select name="roles[]" class="select2 m-b-10 select2-multiple" style="width: 100%" multiple="multiple" data-placeholder="Choose">
                             @foreach ($roles as $role)
                                 <option {{$item->hasRole($role->name) ? 'selected' : ''}} value="{{$role->id}}"> {{$role->name}}</option>
                             @endforeach

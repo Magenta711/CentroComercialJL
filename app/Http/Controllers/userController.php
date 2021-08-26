@@ -13,6 +13,7 @@ class userController extends Controller
     public function __construct() {
         $this->middleware('auth');
         $this->middleware('verified');
+        $this->middleware('permission:Lista de usuarios|Crear usuarios|Editar usuarios|Eliminar usuarios', ['only' => ['index','store']]);
     }
     public function index()
     {
@@ -46,7 +47,7 @@ class userController extends Controller
             'roles' => ['required'],
         ]);
         $id->update($request->all());
-        $id->assignRole($request->roles);
+        $id->syncRoles($request->roles);
         return redirect()->route('users')->with('success','Se ha actualizado el usuario correctamente');
     }
     public function destroy(User $id)

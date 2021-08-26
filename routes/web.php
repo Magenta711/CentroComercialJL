@@ -67,3 +67,10 @@ Route::patch('admin/servicios/espacios_publicitarios/{id}','publicityPlaceContro
 Route::post('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@destroy')->name('publicity_place.delete');
 
 Route::get('admin/servicios/salon_eventos','eventRoomController@index')->name('event_room');
+
+Route::get('admin/rent','rentsController@index')->name('admin_rents');
+Route::get('admin/rent/{id}','rentsController@index')->name('admin_rents.show');
+Route::get('admin/rent/{id}/edit','rentsController@index')->name('admin_rents.edit');
+Route::put('admin/rent/{id}','rentsController@index')->name('admin_rents.update');
+Route::patch('admin/rent/{id}','rentsController@sudadd')->name('admin_rents.sudadd');
+Route::delete('admin/rent/{id}','rentsController@index')->name('admin_rents.delete');

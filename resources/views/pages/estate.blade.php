@@ -16,54 +16,11 @@
         <section class="container">
             <h1 class="display-4 text-blue-dark text-center">TIENDAS</h1>
             <div class="row justify-content-center">
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
-                    <img class="m-3" src="{{asset('img/pages/l_img_1.png')}}" alt="" width="100%">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
-                    <img class="m-3" src="{{asset('img/pages/l_img_2.png')}}" alt="" width="100%">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
-                    <img class="m-3" src="{{asset('img/pages/l_img_1.png')}}" alt="" width="100%">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
-                    <img class="m-3" src="{{asset('img/pages/l_img_2.png')}}" alt="" width="100%">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
-                    <img class="m-3" src="{{asset('img/pages/l_img_1.png')}}" alt="" width="100%">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
-                    <img class="m-3" src="{{asset('img/pages/l_img_2.png')}}" alt="" width="100%">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
-                    <img class="m-3" src="{{asset('img/pages/l_img_1.png')}}" alt="" width="100%">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
-                    <img class="m-3" src="{{asset('img/pages/l_img_2.png')}}" alt="" width="100%">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
-                    <img class="m-3" src="{{asset('img/pages/l_img_1.png')}}" alt="" width="100%">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
-                    <img class="m-3" src="{{asset('img/pages/l_img_2.png')}}" alt="" width="100%">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
-                    <img class="m-3" src="{{asset('img/pages/l_img_1.png')}}" alt="" width="100%">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
-                    <img class="m-3" src="{{asset('img/pages/l_img_2.png')}}" alt="" width="100%">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
-                    <img class="m-3" src="{{asset('img/pages/l_img_1.png')}}" alt="" width="100%">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
-                    <img class="m-3" src="{{asset('img/pages/l_img_2.png')}}" alt="" width="100%">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
-                    <img class="m-3" src="{{asset('img/pages/l_img_1.png')}}" alt="" width="100%">
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
-                    <img class="m-3" src="{{asset('img/pages/l_img_2.png')}}" alt="" width="100%">
-                </div>
+                @foreach ($estates as $item)
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
+                        <img class="m-3" src="{{asset("storage/avatar/locals/".$item->avatar)}}" alt="" width="100%">
+                    </div>
+                @endforeach
             </div>
         </section>
     </div>
