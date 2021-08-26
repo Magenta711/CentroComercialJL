@@ -124,13 +124,13 @@
                 {{-- @if (!auth()->user()->isAdmin()) --}}
                     <li class="nav-small-cap">--- Principal</li>
                     <li>
-                        <a class="waves-effect waves-dark" href="{{route('home')}}" aria-expanded="false">
+                        <a class="waves-effect waves-dark" href="{{route('my.local')}}" aria-expanded="false">
                             <i class="fa fa-home"></i>
-                            <span class="hide-menu">Locales</span>
+                            <span class="hide-menu">Mis locales</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="waves-effect waves-dark" href="{{route('home')}}" aria-expanded="false">
+                    {{-- <li>
+                        <a class="waves-effect waves-dark" href="{{route('my_space')}}" aria-expanded="false">
                             <i class="fa fa-home"></i>
                             <span class="hide-menu">Espacios publicitarios</span>
                         </a>
@@ -146,7 +146,7 @@
                             <i class="fa fa-home"></i>
                             <span class="hide-menu">Eventos</span>
                         </a>
-                    </li>
+                    </li> --}}
                 {{-- @endif --}}
             </li>
             </ul>

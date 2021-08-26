@@ -11,6 +11,7 @@ Route::get('/', 'pagesController@index')->name('pages');
 Route::get('nosotros','pagesController@about')->name('about');
 Route::get('barbosa','pagesController@barbosa')->name('barbosa');
 Route::get('tiendas','pagesController@estate')->name('estate');
+Route::get('tiendas/{id}','pagesController@estate_show')->name('estate.show');
 Route::get('salon_eventos','pagesController@event_room')->name('event_room');
 Route::get('locales','pagesController@local')->name('local');
 Route::get('espacios_publicitarios','pagesController@publicity_place')->name('publicity_place');
@@ -74,3 +75,8 @@ Route::get('admin/rent/{id}/edit','rentsController@index')->name('admin_rents.ed
 Route::put('admin/rent/{id}','rentsController@index')->name('admin_rents.update');
 Route::patch('admin/rent/{id}','rentsController@sudadd')->name('admin_rents.sudadd');
 Route::delete('admin/rent/{id}','rentsController@index')->name('admin_rents.delete');
+
+Route::get('my/locals','myLoclasController@index')->name('my.local');
+Route::get('my/rent/{id}','myLoclasController@show')->name('my.local.show');
+Route::get('my/rent/{id}/edit','myLoclasController@edit')->name('my.local.edit');
+Route::put('my/rent/{id}','myLoclasController@update')->name('my.local.update');

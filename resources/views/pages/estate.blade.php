@@ -18,7 +18,9 @@
             <div class="row justify-content-center">
                 @foreach ($estates as $item)
                     <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
-                        <img class="m-3" src="{{asset("storage/avatar/locals/".$item->avatar)}}" alt="" width="100%">
+                        <a href="{{route('estate.show',$item->id)}}">
+                            <img class="m-3" src="{{asset("storage/avatar/locals/".$item->avatar)}}" alt="" width="100%">
+                        </a>
                     </div>
                 @endforeach
             </div>

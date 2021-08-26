@@ -19,7 +19,7 @@ class pagesController extends Controller
         return view('pages.barbosa');
     }
     public function estate(){
-        $estates = Rent::where('status',1)->get();
+        $estates = Rent::where('status',1)->where('is_page',1)->get();
         return view('pages.estate',compact('estates'));
     }
     public function event_room(){
@@ -30,5 +30,12 @@ class pagesController extends Controller
     }
     public function publicity_place(){
         return view('pages.publicity_place');
+    }
+    public function estate_show(Rent $id)
+    {
+        if ($id->status == 1 && $id->is_page == 1) {
+            return view('pages.estates',compact('id'));
+        }
+        return redirect()->route('estate');
     }
 }

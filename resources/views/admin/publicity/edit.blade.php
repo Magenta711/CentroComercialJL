@@ -139,7 +139,7 @@
             })
         });
     </script>
-
+    {{-- 112 / 328 - 107 = 221  34.2 = 65.8 --}}
         <script src="{{asset('eliteadmin/assets/node_modules/dropzone/dist/dropzone.js')}}"></script>
         <script>
             Dropzone.options.myAwesomeDropzone = {

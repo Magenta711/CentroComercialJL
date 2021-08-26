@@ -32,8 +32,8 @@
             <div class="col-md-2">
                 <h3>Siguenos</h3>
                 <div class="social">
-                    <a class="mx-2" href=""><i class="fab fa-instagram"></i></a>
-                    <a class="mx-2" href="https://www.facebook.com/centrocomercialjoseluis"><i class="fab fa-facebook-f"></i></a>
+                    <a class="mx-2" target="_blank" href=""><i class="fab fa-instagram"></i></a>
+                    <a class="mx-2" target="_blank" href="https://www.facebook.com/centrocomercialjoseluis"><i class="fab fa-facebook-f"></i></a>
                 </div>
            </div>
            <div class="col-md-2">
