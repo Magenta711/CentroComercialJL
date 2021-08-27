@@ -4,7 +4,7 @@
 
 <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Administración de locales</h4>
+        <h4 class="text-themecolor">Administración de rentas</h4>
     </div>
     <div class="col-md-7 align-self-center text-right">
         <div class="d-flex justify-content-end align-items-center">
@@ -16,25 +16,11 @@
         </div>
     </div>
 </div>
-<form action="{{route('my.local.update',$id->id)}}" method="post" enctype="multipart/form-data">
+<form action="{{route('admin_rents.update',$id->id)}}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 @include('my.local.includes.info_edit')
 </form>
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-body">
-                <label for="file">Galeria</label>
-                <form action="{{route('files.upload',[$id->id,4])}}" class="dropzone" id="myAwesomeDropzone">
-                    <div class="fallback">
-                        <input name="file" type="file" multiple />
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
 
 @section('css')

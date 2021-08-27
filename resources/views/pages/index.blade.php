@@ -17,61 +17,26 @@
               </div>
         </section>
     </div>
-    <div id="estate" class="bg-purple text-white p-3">
-        <section class="container">
-            <h1 class="display-4 text-center">TIENDAS</h1>
-            <p class="text-center">Date el lujo de visitar nuestras tiendas con toda la disposición de atendete, y si fuera poco encuentra en el mismo lugar, donde estudiar o hacer las transaciones que desees ¡Que esperas!</p>
-        </section>
-                <div class="slider mt-3 mb-3">
-                    <div class="slide-track">
+    @if ($estates)
+        <div id="estate" class="bg-purple text-white p-3">
+            <section class="container">
+                <h1 class="display-4 text-center">TIENDAS</h1>
+                <p class="text-center">Date el lujo de visitar nuestras tiendas con toda la disposición de atendete, y si fuera poco encuentra en el mismo lugar, donde estudiar o hacer las transaciones que desees ¡Que esperas!</p>
+            </section>
+            <div class="slider mt-3 mb-3">
+                <div class="slide-track">
+                    @foreach ($estates as $item)
                         <div class="slide">
-                            <img src="{{asset('img/pages/l_img_1.png')}}" width="250" alt="" />
+                            <img src="{{asset("storage/avatar/locals/".$item->avatar)}}" width="250" alt="" />
                         </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_2.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_1.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_2.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_1.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_2.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_1.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_2.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_1.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_2.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_1.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_2.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_1.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_2.png')}}" width="250" alt="" />
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-                <div class="text-center">
-                    <a class="btn btn-primary btn-sm" href="{{route('estate')}}" role="button">Ver todo</a>
-                </div>
-    </div>
+            </div>
+            <div class="text-center">
+                <a class="btn btn-primary btn-sm" href="{{route('estate')}}" role="button">Ver todo</a>
+            </div>
+        </div>
+    @endif
     <div id="what_do" class="bg-white">
         <section class="container">
             <div class="jumbotron">

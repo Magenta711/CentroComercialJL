@@ -58,8 +58,26 @@
                             @endforeach
                         </h4>
                     @endif
-                    <p>Galeria</p>
-                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="file">Galeria</label>
+                            <div class="card-columns el-element-overlay">
+                                @if ($id->files)
+                                    @foreach ($id->files as $item)
+                                        <div class="card">
+                                            <div class="el-card-item">
+                                                <div class="el-card-avatar el-overlay-1">
+                                                    <a href="{{$item->url.$item->name}}">
+                                                        <img src="{{$item->url.$item->name}}" alt="{{$item->name}}" width="100%" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                     <p>Productos</p>
                 </div>
                 <div class="col-md-3 text-center">
@@ -77,4 +95,24 @@
         </section>
     </div>
     @include('pages.layouts.contact-form')
+@endsection
+
+@section('css')
+    <link href="{{asset('eliteadmin/assets/node_modules/magnific-popup/dist/magnific-popup.css')}}" rel="stylesheet">
+@endsection
+
+@section('js')
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="{{asset('eliteadmin/assets/node_modules/magnific-popup/dist/jquery.magnific-popup.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.el-card-avatar').magnificPopup({
+                delegate: 'a', // the selector for gallery item
+                type: 'image',
+                gallery: {
+                    enabled: true
+                }
+            });
+        });
+    </script>
 @endsection

@@ -54,7 +54,7 @@
                         </div>
                     </div>
                     <div class="el-card-content">
-                        <h3 class="box-title">Local {{$item->code}}</h3>
+                        <h3 class="box-title">{{$item->type == 'office' ? 'Officina' : 'Local' }} {{$item->code}}</h3>
                         <span class="badge badge-pill {{$item->status ? 'badge-cyan' : 'badge-primary'}}">{{$item->status ? 'Disponible' : 'Arrendado'}}</span>
                     </div>
                 </div>

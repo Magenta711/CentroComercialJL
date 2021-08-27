@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rent;
+use App\SocialMediaRents;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class rentsController extends Controller
 {
@@ -45,9 +47,9 @@ class rentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Rent $id)
     {
-        //
+        return view('admin.rent.show',compact('id'));
     }
 
     /**
@@ -56,9 +58,9 @@ class rentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Rent $id)
     {
-        //
+        return view('admin.rent.edit',compact('id'));
     }
 
     /**
@@ -68,9 +70,24 @@ class rentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Rent $id)
     {
-        //
+        if ($request->hasFile('file')){
+            $file = $request->file('file');
+            $name = time().'.'.$file->getClientOriginalExtension();
+            Storage::putFileAs('public/avatar/locals/', $file, $name);
+            $request['avatar'] = $name;
+        }
+        $id->update($request->all());
+        SocialMediaRents::where('rent_id',$id->id)->delete();
+        foreach ($request->link_social_media as $key => $value) {
+            SocialMediaRents::create([
+                'rent_id' => $id->id,
+                'link' => $request->link_social_media[$key],
+                'type' => $request->type_social_media[$key]
+            ]);
+        }
+        return redirect()->route('admin_rents')->with('success','La renta fue editado correctamente');
     }
 
     /**

@@ -46,7 +46,7 @@ class publicityPlaceController extends Controller
             $file = new filesController();
             $file->upload($request,$id->id,3);
         }
-        return redirect()->route('publicity_place')->with('success','Espacio publicitario '.$request->title.' creado');
+        return redirect()->route('admin.publicity_place')->with('success','Espacio publicitario '.$request->title.' creado');
     }
     public function show(Publicity $id)
     {
@@ -71,7 +71,7 @@ class publicityPlaceController extends Controller
             $request['avatar'] = $name;
         }
         $id->update($request->all());
-        return redirect()->route('publicity_place')->with('success','Espacio publicitario '.$request->title.' actualizado');
+        return redirect()->route('admin.publicity_place')->with('success','Espacio publicitario '.$request->title.' actualizado');
     }
     public function add(Publicity $id)
     {
@@ -86,7 +86,7 @@ class publicityPlaceController extends Controller
         ]);
         $request['publicity_id'] = $id->id;
         PublicityDetail::create($request->all());
-        return redirect()->route('publicity_place')->with('success','Espacio publicitario '.$id->title.' rentado');
+        return redirect()->route('admin.publicity_place')->with('success','Espacio publicitario '.$id->title.' rentado');
     }
     public function destroy(Publicity $id)
     {

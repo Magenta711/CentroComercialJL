@@ -16,7 +16,7 @@
         </div>
     </div>
 </div>
-<form action="{{route('publicity_place.update',$id->id)}}" method="post" enctype="multipart/form-data">
+<form action="{{route('admin.publicity_place.update',$id->id)}}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 <div class="row">

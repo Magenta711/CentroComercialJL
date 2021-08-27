@@ -88,10 +88,10 @@
                                 <a href="{{route('locals')}}">Locales</a>
                             </li>
                             <li>
-                                <a href="{{route('event_room')}}">Salón de eventos</a>
+                                <a href="{{route('admin.event_room')}}">Salón de eventos</a>
                             </li>
                             <li>
-                                <a href="{{route('publicity_place')}}">Espacios publicitarios</a>
+                                <a href="{{route('admin.publicity_place')}}">Espacios publicitarios</a>
                             </li>
                         </ul>
                     </li>

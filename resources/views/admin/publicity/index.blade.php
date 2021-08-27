@@ -12,7 +12,7 @@
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
                 <li class="breadcrumb-item active">Administración de espacios publicitarios</li>
             </ol>
-            <a href="{{route('publicity_place.create')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Crear
+            <a href="{{route('admin.publicity_place.create')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Crear
             </a>
         </div>
     </div>
@@ -30,18 +30,18 @@
                         <div class="el-overlay">
                             <ul class="el-info">
                                 <li>
-                                    <a href="{{route('publicity_place.show',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                    <a href="{{route('admin.publicity_place.show',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
                                         <i class="fa fa-eye"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{route('publicity_place.edit',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                    <a href="{{route('admin.publicity_place.edit',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                 </li>
                                 @if ($item->status)
                                     <li>
-                                        <a href="{{route('publicity_place.add',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                        <a href="{{route('admin.publicity_place.add',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
                                             <i class="fa fa-image"></i>
                                         </a>
                                     </li>

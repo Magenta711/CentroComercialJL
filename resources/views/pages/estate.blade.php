@@ -16,13 +16,15 @@
         <section class="container">
             <h1 class="display-4 text-blue-dark text-center">TIENDAS</h1>
             <div class="row justify-content-center">
-                @foreach ($estates as $item)
+                @forelse ($estates as $item)
                     <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 p-3">
                         <a href="{{route('estate.show',$item->id)}}">
                             <img class="m-3" src="{{asset("storage/avatar/locals/".$item->avatar)}}" alt="" width="100%">
                         </a>
                     </div>
-                @endforeach
+                @empty
+                    <p class="text-muted text-center">Sin resultados</p>
+                @endforelse
             </div>
         </section>
     </div>

@@ -57,24 +57,24 @@ Route::post('files/{id}/{type}','filesController@upload')->name('files.upload');
 Route::get('formularios','formsController@index')->name('forms')->middleware('auth')->middleware('verified');
 Route::post('formularios','formsController@store')->name('forms.store');
 
-Route::get('admin/servicios/espacios_publicitarios','publicityPlaceController@index')->name('publicity_place');
-Route::get('admin/servicios/espacios_publicitarios/crear','publicityPlaceController@create')->name('publicity_place.create');
-Route::post('admin/servicios/espacios_publicitarios','publicityPlaceController@store')->name('publicity_place.store');
-Route::get('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@show')->name('publicity_place.show');
-Route::get('admin/servicios/espacios_publicitarios/{id}/editar','publicityPlaceController@edit')->name('publicity_place.edit');
-Route::put('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@update')->name('publicity_place.update');
-Route::get('admin/servicios/espacios_publicitarios/{id}/add','publicityPlaceController@add')->name('publicity_place.add');
-Route::patch('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@save')->name('publicity_place.save');
-Route::post('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@destroy')->name('publicity_place.delete');
+Route::get('admin/servicios/espacios_publicitarios','publicityPlaceController@index')->name('admin.publicity_place');
+Route::get('admin/servicios/espacios_publicitarios/crear','publicityPlaceController@create')->name('admin.publicity_place.create');
+Route::post('admin/servicios/espacios_publicitarios','publicityPlaceController@store')->name('admin.publicity_place.store');
+Route::get('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@show')->name('admin.publicity_place.show');
+Route::get('admin/servicios/espacios_publicitarios/{id}/editar','publicityPlaceController@edit')->name('admin.publicity_place.edit');
+Route::put('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@update')->name('admin.publicity_place.update');
+Route::get('admin/servicios/espacios_publicitarios/{id}/add','publicityPlaceController@add')->name('admin.publicity_place.add');
+Route::patch('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@save')->name('admin.publicity_place.save');
+Route::post('admin/servicios/espacios_publicitarios/{id}','publicityPlaceController@destroy')->name('admin.publicity_place.delete');
 
-Route::get('admin/servicios/salon_eventos','eventRoomController@index')->name('event_room');
+Route::get('admin/servicios/salon_eventos','eventRoomController@index')->name('admin.event_room');
 
 Route::get('admin/rent','rentsController@index')->name('admin_rents');
-Route::get('admin/rent/{id}','rentsController@index')->name('admin_rents.show');
-Route::get('admin/rent/{id}/edit','rentsController@index')->name('admin_rents.edit');
-Route::put('admin/rent/{id}','rentsController@index')->name('admin_rents.update');
+Route::get('admin/rent/{id}','rentsController@show')->name('admin_rents.show');
+Route::get('admin/rent/{id}/edit','rentsController@edit')->name('admin_rents.edit');
+Route::put('admin/rent/{id}','rentsController@update')->name('admin_rents.update');
 Route::patch('admin/rent/{id}','rentsController@sudadd')->name('admin_rents.sudadd');
-Route::delete('admin/rent/{id}','rentsController@index')->name('admin_rents.delete');
+Route::delete('admin/rent/{id}','rentsController@delete')->name('admin_rents.delete');
 
 Route::get('my/locals','myLoclasController@index')->name('my.local');
 Route::get('my/rent/{id}','myLoclasController@show')->name('my.local.show');

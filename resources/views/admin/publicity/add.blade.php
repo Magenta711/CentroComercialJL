@@ -16,7 +16,7 @@
         </div>
     </div>
 </div>
-<form action="{{route('publicity_place.save',$id->id)}}" method="post">
+<form action="{{route('admin.publicity_place.save',$id->id)}}" method="post">
     @csrf
     @method('PATCH')
     <div class="card">
