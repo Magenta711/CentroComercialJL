@@ -49,7 +49,7 @@
             <h1 class="display-4 text-blue-dark text-center">{{$id->brand}}</h1>
             <div class="row">
                 <div class="col-md-9">
-                    <p>{!!$id->description!!}</p>
+                    <p>{!! str_replace("\n", '</br>', addslashes($id->description))!!}</p>
                     @if ($id->social_medias)
                         <p>Puedes encontrar a {{$id->brand}} en:</p>
                         <h4>

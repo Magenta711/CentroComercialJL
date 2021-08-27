@@ -59,7 +59,7 @@
             </div>
             <div class="col-md-12">
                 <label for="description">Descripción</label>
-                <p>{{$id->description}}</p>
+                <p>{!! str_replace("\n", '</br>', addslashes($id->description)) !!}</p>
             </div>
         </div>
         <div class="row">
@@ -102,7 +102,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="dimensions">Descripción</label>
-                        <p>{{$item->description}}</p>
+                        <p>{!! str_replace("\n", '</br>', addslashes($item->description)) !!}</p>
                     </div>
                 </div>
                 <div class="col-md-12">

@@ -84,7 +84,6 @@
                                 <input type="url" name="link_social_media[]" class="form-control" value="{{$value->link}}" placeholder="https://example.com" pattern="https://.*">
                             </div>
                         </div>
-                    </div>
                     @empty
                         <div class="row mb-2" id="origen_social_media">
                             <div class="col-md-6">
@@ -131,7 +130,7 @@
         <div class="card">
             <div class="card-body">
                 <label for="file">Galeria</label>
-                <form action="{{route('files.upload',[$id->id,3])}}" class="dropzone" id="myAwesomeDropzone">
+                <form action="{{route('files.upload',[$id->id,4])}}" class="dropzone" id="myAwesomeDropzone">
                     <div class="fallback">
                         <input name="file" type="file" multiple />
                     </div>

@@ -64,7 +64,7 @@
                 </div>
                 <div class="form-group">
                     <label for="ubications">Descripción</label>
-                    <p>{{$id->description}}</p>
+                    <p>{!! str_replace("\n", '</br>', addslashes($id->description)) !!}</p>
                 </div>
                 <div class="form-group">
                     <label for="ubications">Redes sociales</label><br>
@@ -81,6 +81,19 @@
         <div class="row">
             <div class="col-md-12">
                 <label for="file">Galeria</label>
+                <div class="card-columns el-element-overlay">
+                    @if ($id->files)
+                        @foreach ($id->files as $item)
+                            <div class="card">
+                                <div class="el-card-item">
+                                    <div class="el-card-avatar el-overlay-1">
+                                        <a class="image-popup-vertical-fit" href="{{$item->url.$item->name}}"> <img src="{{$item->url.$item->name}}" alt="{{$item->name}}" /> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
             </div>
         </div>
         <div class="row">
@@ -127,7 +140,7 @@
             </div>
             <div class="col-md-12">
                 <label for="description">Descripción</label>
-                <p>{{$id->local->description}}</p>
+                <p>{!! str_replace("\n", '</br>', addslashes($id->local->description)) !!}</p>
             </div>
         </div>
         <div class="row">
@@ -135,7 +148,7 @@
                 <label for="file">Galeria</label>
                 <div class="card-columns el-element-overlay">
                     @if ($id->local->files)
-                        @foreach ($id->files as $item)
+                        @foreach ($id->local->files as $item)
                             <div class="card">
                                 <div class="el-card-item">
                                     <div class="el-card-avatar el-overlay-1">

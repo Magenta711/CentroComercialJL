@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-md-12">
                         <label for="description">Descripción *</label>
-                        <p>{{$id->description}}</p>
+                        <p>{!! str_replace("\n", '</br>', addslashes($id->description)) !!}</p>
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                 </div>
                 <div class="col-md-12">
                     <label for="">Descripción</label>
-                    <p>{{$item->description}}</p>
+                    <p>{!! str_replace("\n", '</br>', addslashes($item->description)) !!}</p>
                 </div>
             </div>
             <hr>
