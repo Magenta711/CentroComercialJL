@@ -24,6 +24,10 @@
                     <input type="text" name="brand" value="{{$id->brand}}" id="brand" class="form-control">
                 </div>
                 <div class="form-group">
+                    <label for="tel">Teléfono</label>
+                    <input type="tel" name="tel" value="{{$id->tel}}" id="tel" class="form-control">
+                </div>
+                <div class="form-group">
                     <label for="category_id">Categoria</label>
                     <select name="category_id" id="category_id" class="form-control">
                         <option selected disabled>Selecciona la categoria</option>

@@ -53,24 +53,6 @@
                 @empty
                     <p class="text-muted text-center">Sin resultados</p>
                 @endforelse
-                {{-- <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 p-3">
-                    <div class="card text-center bg-ping text-white">
-                        <img src="{{asset('img/pages/local2.jpg')}}" alt="">
-                        <div class="card-body">
-                            <h4>Local 101</h4>
-                            <p>
-                                Piso 1
-                                 <br>
-                                <small>10m * 15m</small>
-                                 <br>
-                                <small>$000.000</small>
-                            </p>
-                            <button class="btn btn-sm btn-primary">
-                                Ver local
-                            </button>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </section>
     </div>

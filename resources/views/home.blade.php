@@ -23,7 +23,7 @@
                             <h5 class="card-title">USUARIOS</h5>
                             <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                 <span class="display-5 text-info"><i class="icon-people"></i></span>
-                                <a href="javscript:void(0)" class="link display-5 ml-auto">23</a>
+                                <a href="javscript:void(0)" class="link display-5 ml-auto">{{$users}}</a>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                             <h5 class="card-title">LOCALES DISPONIBLES</h5>
                             <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                 <span class="display-5 text-purple"><i class="icon-folder"></i></span>
-                                <a href="javscript:void(0)" class="link display-5 ml-auto">6</a>
+                                <a href="javscript:void(0)" class="link display-5 ml-auto">{{$locals}}</a>
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                             <h5 class="card-title">SALON DE EVENTOS</h5>
                             <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                 <span class="display-5 text-primary"><i class="icon-folder-alt"></i></span>
-                                <a href="javscript:void(0)" class="link display-5 ml-auto">311</a>
+                                <a href="javscript:void(0)" class="link display-5 ml-auto">0</a>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                             <h5 class="card-title">TOTAL DE VISITAS</h5>
                             <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                 <span class="display-5 text-success"><i class="icon-wallet"></i></span>
-                                <a href="javscript:void(0)" class="link display-5 ml-auto">2117</a>
+                                <a href="javscript:void(0)" class="link display-5 ml-auto">0</a>
                             </div>
                         </div>
                     </div>

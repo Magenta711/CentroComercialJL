@@ -9,6 +9,10 @@
                     <p>{{$id->brand}}</p>
                 </div>
                 <div class="form-group">
+                    <label for="ubications">Teléfono</label>
+                    <p>{{$id->tel}}</p>
+                </div>
+                <div class="form-group">
                     <label for="ubications">Página</label>
                     <p>{{$id->page}}</p>
                 </div>
