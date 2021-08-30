@@ -46,7 +46,7 @@
                         <img class="img-thumbnail rounded-circle img-radius m-3" src="{{asset('img/pages/barbosa1.jpg')}}" alt="Barbosa">
                     </div>
                     <div class="col-md-6">
-                        <p class="lead">Barbosa sin duda es un hermoso pueblo a unos cuantos kilometros de Medellín, el ultimo municipio del Area Metropolitana, llegar es tan facil como tomar alimentador del metro.</p>
+                        <p class="lead">Barbosa sin duda es un hermoso pueblo a unos cuantos kilometros de Medellín, último municipio del Area Metropolitana, llegar es tan facil tomando alimentador del metro en la estación Copacabana.</p>
                         <hr class="my-4">
                         <p>Vistita Barbosa y encontraras un municipio lleno de cultura, destacable gastronomia, naturaleza, lugares inolvidables y todo el sabor de un pueblo Antioqueño.</p>
                         <p>Se te puede antojar ir de finca, de camping, caminata al cerro e ir a conocer la zona hurbana de este hermoso municipio municipio.</p>

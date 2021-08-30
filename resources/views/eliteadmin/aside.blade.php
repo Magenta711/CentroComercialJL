@@ -13,10 +13,11 @@
                         <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu animated flipInY">
-                        <a href="javascript:void(0)" class="dropdown-item">
-                            <i class="ti-user"></i> Perfil</a>
+                        <a href="{{route('my.profile')}}" class="dropdown-item">
+                            <i class="ti-user"></i> Perfil
+                        </a>
                         <div class="dropdown-divider"></div>
-                        <a href="javascript:void(0)" class="dropdown-item">
+                        <a href="{{route('my.setting')}}" class="dropdown-item">
                             <i class="ti-settings"></i> Configuración</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item"href="{{ route('logout') }}"
