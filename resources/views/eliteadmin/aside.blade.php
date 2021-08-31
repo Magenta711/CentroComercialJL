@@ -26,7 +26,7 @@
                         <a href="{{route('my.setting')}}" class="dropdown-item">
                             <i class="ti-settings"></i> Configuración</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item"href="{{ route('logout') }}"
+                        <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();" >
                             <i class="fa fa-power-off"></i> {{ __('Logout') }}</a>

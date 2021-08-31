@@ -23,7 +23,7 @@ class filesController extends Controller
                 'type' => $file->getClientOriginalExtension(),
                 'url' => '/storage/upload/',
             ]);
-            return response()->json(['success'=>'Se subio el archivo correctamente']);
+            return response()->json(['success'=>'Se subio el archivo']);
         }else {
             return response()->json(['success'=>'No se examino un archivo']);
         }
@@ -41,7 +41,7 @@ class filesController extends Controller
                 'size' => $size,
                 'type' => $file->getClientOriginalExtension(),
             ]);
-            return response()->json(['success'=>'Se subio el archivo correctamente']);
+            return response()->json(['success'=>'Se subio el archivo']);
         }else {
             return response()->json(['success'=>'No se examino un archivo']);
         }

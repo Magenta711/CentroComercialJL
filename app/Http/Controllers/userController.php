@@ -37,7 +37,7 @@ class userController extends Controller
         // Gate::after(function ($user, $ability) {
         //     return $user->hasRole('Super Admin'); // note this returns boolean
         //  });
-        return redirect()->route('users')->with('success','Se ha creado el usuario correctamente');
+        return redirect()->route('users')->with('success','Se ha creado el usuario');
     }
     public function update(Request $request,User $id)
     {
@@ -48,12 +48,12 @@ class userController extends Controller
         ]);
         $id->update($request->all());
         $id->syncRoles($request->roles);
-        return redirect()->route('users')->with('success','Se ha actualizado el usuario correctamente');
+        return redirect()->route('users')->with('success','Se ha actualizado el usuario');
     }
     public function destroy(User $id)
     {
         $id->delete();
-        return redirect()->route('users')->with('success','Se ha eliminado el usuario correctamente');
+        return redirect()->route('users')->with('success','Se ha eliminado el usuario');
     }
 
 }

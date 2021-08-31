@@ -33,7 +33,7 @@ class roleController extends Controller
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
         return redirect()->route('roles')
-            ->with('success','El rol ha sido creado correctamente');
+            ->with('success','El rol ha sido creado');
     }
     /**
      * Update the specified resource in storage.
@@ -51,7 +51,7 @@ class roleController extends Controller
         $id->update(['name' => $request->name]);
         $id->syncPermissions($request->input('permission'));
         return redirect()->route('roles')
-            ->with('success','El rol ha sido actualizado correctamente');
+            ->with('success','El rol ha sido actualizado');
     }
 
     /**
@@ -64,6 +64,6 @@ class roleController extends Controller
     {
         $id->delete();
         return redirect()->route('roles')
-            ->with('success','El rol ha eliminado correctamente');
+            ->with('success','El rol ha eliminado');
     }
 }

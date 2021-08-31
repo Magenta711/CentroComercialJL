@@ -91,7 +91,7 @@ class myLoclasController extends Controller
                 'type' => $request->type_social_media[$key]
             ]);
         }
-        return redirect()->route('my.local')->with('success','Mi local fue editado y publicado correctamente');
+        return redirect()->route('my.local')->with('success','Mi local fue editado y publicado');
     }
 
     /**

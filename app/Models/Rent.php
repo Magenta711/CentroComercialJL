@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rent extends Model
 {
-    protected $fillable = ['user_id','local_id','brand','description','avatar','page','is_page','tel'];
+    protected $fillable = ['user_id','local_id','brand','description','avatar','page','is_page','tel','status'];
 
     public function files()
     {

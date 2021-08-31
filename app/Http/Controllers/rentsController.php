@@ -87,7 +87,7 @@ class rentsController extends Controller
                 'type' => $request->type_social_media[$key]
             ]);
         }
-        return redirect()->route('admin_rents')->with('success','La renta fue editado correctamente');
+        return redirect()->route('admin_rents')->with('success','La renta fue editado');
     }
 
     /**
@@ -96,8 +96,18 @@ class rentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Rent $id)
     {
-        //
+        return response()->json([ 'success'=>'Local eliminado']);
+        $id->delete();
+        return redirect()->route('admin_rents')->with('success','La renta fue eliminada');
+    }
+
+    public function sudadd(Rent $id)
+    {
+        $id->update([
+            'status' => 0,
+        ]);
+        return redirect()->route('admin_rents')->with('success','El la renta fue terminada');
     }
 }

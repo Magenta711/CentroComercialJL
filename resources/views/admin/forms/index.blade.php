@@ -4,13 +4,13 @@
 
 <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Administración de formularios de contacto</h4>
+        <h4 class="text-themecolor">Administración de formularios</h4>
     </div>
     <div class="col-md-7 align-self-center text-right">
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
-                <li class="breadcrumb-item active">Administración de formularios</li>
+                <li class="breadcrumb-item active">Administración de formularios</li>x
             </ol>
         </div>
     </div>
@@ -44,9 +44,9 @@
                             <td>{{$item->created_at}}</td>
                             <td>
                                 <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#edit-user-modal-{{$item->id}}"><i class="fa fa-check"></i></button>
-                                {{-- @include('admin.user.includes.modals.edit') --}}
-                                <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#delete-user-modal"><i class="fa fa-trash"></i></button>
-                                {{-- @include('admin.user.includes.modals.delete') --}}
+                                <a href="#" id="idItem-{{$item->id}}" class="btn btn-sm btn-primary delete-modal">
+                                    <i class="fa fa-trash"></i>
+                                </a>
                             </td>
                         </tr>
                     @endforeach
@@ -66,64 +66,34 @@
     <script src="{{asset('eliteadmin/assets/node_modules/datatables.net-bs4/js/dataTables.responsive.min.js')}}"></script>
     <script>
         $(function () {
-            $('#myTable').DataTable();
-            var table = $('#example').DataTable({
-                "columnDefs": [{
-                    "visible": false,
-                    "targets": 2
-                }],
-                "order": [
-                    [2, 'asc']
-                ],
-                "displayLength": 25,
-                "drawCallback": function (settings) {
-                    var api = this.api();
-                    var rows = api.rows({
-                        page: 'current'
-                    }).nodes();
-                    var last = null;
-                    api.column(2, {
-                        page: 'current'
-                    }).data().each(function (group, i) {
-                        if (last !== group) {
-                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
-                            last = group;
-                        }
-                    });
-                },
-                language: {
-                    lengthMenu:       "Mostrar _MENU_ entradas",
-                    zeroRecords:      "No se encontro registros",
-                    search:           "Buscar",
-                    paginate: {
-                        first:    '«',
-                        previous: '‹',
-                        next:     '›',
-                        last:     '»'
-                    },
-                    aria: {
-                        paginate: {
-                            first:    'First',
-                            previous: 'Previous',
-                            next:     'Next',
-                            last:     'Last'
-                        }
-                    },
-                    info:             "Mostrando _START_ a _END_ de _TOTAL_ entradas",
-                    infoFiltered:     "(filtrado de _MAX_ registros totales)",
-                    infoEmpty:        "Mostrando 0 a 0 de 0 entradas"
-                },
-            });
-            // Order by the grouping
-            $('#example tbody').on('click', 'tr.group', function () {
-                var currentOrder = table.order()[0];
-                if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
-                    table.order([2, 'desc']).draw();
-                } else {
-                    table.order([2, 'asc']).draw();
-                }
-            });
-            $('.buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel').addClass('btn btn-primary mr-1');
+            $('.delete-modal').click(function () {
+                e.preventDefault();
+                let id = this.id.split('-')[this.id.split('-').length - 1];
+                Swal.fire({
+                    title: '¿Está seguro?',
+                    text: "¡Si elimina el mensaje no prodrás revertirlo!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Eliminar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.value) {
+                        $('#idItem-'+id).parent().parent().parent().parent().parent().parent().parent().remove();
+                        var jqxhr = $.post('/admin/rent/'+id, function name(data) {
+                            Swal.fire(
+                                'Eliminado!',
+                                'El mensaje ha sido eliminado',
+                                'success'
+                            )
+                        })
+                        .fail(function() {
+                            alert( "error" );
+                        });
+                    }
+                })
+            })
         });
     </script>
 @endsection

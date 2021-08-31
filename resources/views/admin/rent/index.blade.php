@@ -40,9 +40,13 @@
                                 </li>
                                 @if ($item->status)
                                     <li>
-                                        <a href="{{route('admin_rents.sudadd',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
-                                            <i class="fas fa-backspace"></i>
-                                        </a>
+
+                                        <a href="{{route('admin_rents.sudadd',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit" onclick="event.preventDefault();
+                                            document.getElementById('sudadd_{{$item->id}}').submit();"><i class="fas fa-backspace"></i></a>
+                                        <form id="sudadd_{{$item->id}}" action="{{route('admin_rents.sudadd',$item->id)}}" method="post">
+                                            @csrf
+                                            @method('PATCH')
+                                        </form>
                                     </li>
                                     <li>
                                         <a id="idItem-{{$item->id}}" class="btn default btn-outline image-popup-vertical-fit delete-modal">
@@ -76,10 +80,11 @@
         }
     });
     $('.delete-modal').click(function () {
+        e.preventDefault();
         let id = this.id.split('-')[this.id.split('-').length - 1];
         Swal.fire({
             title: '¿Está seguro?',
-            text: "¡Si elimina el local no prodrás revertirlo!",
+            text: "¡Si elimina la renta no prodrás revertirlo!",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -88,11 +93,11 @@
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.value) {
-                    $('#idItem-'+id).parent().parent().parent().parent().parent().parent().parent().remove();
+                $('#idItem-'+id).parent().parent().parent().parent().parent().parent().parent().remove();
                 var jqxhr = $.post('/admin/rent/'+id, function name(data) {
                     Swal.fire(
                         'Eliminado!',
-                        'El local ha sido eliminado',
+                        'La renta ha sido eliminado',
                         'success'
                     )
                 })

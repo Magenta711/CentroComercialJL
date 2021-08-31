@@ -50,7 +50,7 @@
             </div>
             <div class="card-body"> <small class="text-muted">Correo electrónico</small>
                 <h6>{{auth()->user()->email}}</h6> <small class="text-muted p-t-30 db">Teléfono</small>
-                <h6>{{auth()->user()->tel}}</h6> <small class="text-muted p-t-30 db">Dirrección</small>
+                <h6>{{auth()->user()->tel}}</h6> <small class="text-muted p-t-30 db">Dirección</small>
                 <h6>{{auth()->user()->address}}</h6>
                 {{-- <div class="map-box">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470029.1604841957!2d72.29955005258641!3d23.019996818380896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C+Gujarat!5e0!3m2!1sen!2sin!4v1493204785508" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
@@ -88,7 +88,7 @@
                                 <br>
                                 <p class="text-muted">{{auth()->user()->email}}</p>
                             </div>
-                            <div class="col-md-3 col-xs-6"> <strong>Dirrección</strong>
+                            <div class="col-md-3 col-xs-6"> <strong>Dirección</strong>
                                 <br>
                                 <p class="text-muted">{{auth()->user()->address}}</p>
                             </div>
@@ -105,46 +105,46 @@
                                 <input type="file" name="avatar" id="avatar" class="dropify" accept="image/*" {!! auth()->user()->avatar ? 'data-default-file="/storage/avatar/users/'.auth()->user()->avatar.'"' : '' !!} />
                             </div>
                             <div class="form-group">
-                                <label class="col-md-12">Nombre</label>
+                                <label for="name" class="col-md-12">Nombre</label>
                                 <div class="col-md-12">
-                                    <input type="text" name="name" placeholder="{{auth()->user()->name}}" class="form-control form-control-line">
+                                    <input type="text" name="name" id="name" placeholder="{{auth()->user()->name}}" class="form-control form-control-line">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="example-email" class="col-md-12">Correo electrónico</label>
+                                <label for="email" class="col-md-12">Correo electrónico</label>
                                 <div class="col-md-12">
-                                    <input type="email" name="email" placeholder="{{auth()->user()->email}}" class="form-control form-control-line" name="example-email" id="example-email">
+                                    <input type="email" name="email" placeholder="{{auth()->user()->email}}" class="form-control form-control-line" name="email" id="email">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-12">Número de teléfono</label>
                                 <div class="col-md-12">
-                                    <input type="text" name="tel" placeholder="{{auth()->user()->tel}}" class="form-control form-control-line">
+                                    <input type="text" name="tel" id="tel" placeholder="{{auth()->user()->tel}}" class="form-control form-control-line">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-12">Dirrección</label>
+                                <label class="col-md-12" for="address">Dirección</label>
                                 <div class="col-md-12">
-                                    <input type="text" name="address" placeholder="{{auth()->user()->address}}" class="form-control form-control-line">
+                                    <input type="text" name="address" id="address" placeholder="{{auth()->user()->address}}" class="form-control form-control-line">
                                 </div>
                             </div>
                             <hr>
                             <div class="form-group">
                                 <label class="col-md-12" for="current_password">Contraseña actual</label>
                                 <div class="col-md-12">
-                                    <input type="password" name="current_password" class="form-control form-control-line">
+                                    <input type="password" name="current_password" id="current_password" class="form-control form-control-line">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-12" for="password">Contraseña</label>
+                                <label class="col-md-12" for="password">Contraseña nueva</label>
                                 <div class="col-md-12">
-                                    <input type="password" name="password" class="form-control form-control-line">
+                                    <input type="password" name="password" id="password" class="form-control form-control-line">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-12" for="password_confirmation">Confirmar contraseña</label>
                                 <div class="col-md-12">
-                                    <input type="password" name="password_confirmation" class="form-control form-control-line">
+                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control form-control-line">
                                 </div>
                             </div>
                             <div class="form-group">
