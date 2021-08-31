@@ -58,6 +58,7 @@
                                     <option {{$value->type == 'Instagram' ? 'selected' : ''}} value="Instagram">Instagram</option>
                                     <option {{$value->type == 'Whatsapp' ? 'selected' : ''}} value="Whatsapp">Whatsapp</option>
                                     <option {{$value->type == 'Twiter' ? 'selected' : ''}} value="Twiter">Twiter</option>
+                                    <option {{$value->type == 'YouTube' ? 'selected' : ''}} value="YouTube">Página Web</option>
                                     <option {{$value->type == 'LinkedIn' ? 'selected' : ''}} value="LinkedIn">LinkedIn</option>
                                     <option {{$value->type == 'Página' ? 'selected' : ''}} value="Página Web">Página Web</option>
                                     <option {{$value->type == 'Otra' ? 'selected' : ''}} value="Otra">Otra</option>

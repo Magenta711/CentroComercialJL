@@ -5,7 +5,13 @@
         <div class="user-profile">
             <div class="user-pro-body">
                 <div>
-                    <img src="{{asset('eliteadmin/assets/images/users/2.jpg')}}" alt="user-img" class="img-circle">
+                    @if (auth()->user()->avatar)
+                        <img src="{{asset('/storage/avatar/users/'.auth()->user()->avatar)}}" alt="user-img" class="img-circle">
+                    @else
+                        <div class="text-center">
+                            <span class="round">{{str_split(auth()->user()->name)[0]}}</span>
+                        </div>
+                    @endif
                 </div>
                 <div class="dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle u-dropdown link hide-menu" data-toggle="dropdown" role="button" aria-haspopup="true"

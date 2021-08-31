@@ -13,6 +13,9 @@
         if ($type == "Twiter"){
             return "twitter"; //fab
         }
+        if ($type == "YouTube"){
+            return "youtube"; //fab
+        }
         if ($type == "LinkedIn"){
             return "linkedin-in"; //fab
         }

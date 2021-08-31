@@ -31,6 +31,7 @@ Route::get('admin/barbosa','admin_pages\barbosaController@index')->name('admin_b
 Route::get('admin/tiendas','admin_pages\estateController@estate')->name('admin_estate');
 
 Route::get('profile','my\profileController@index')->name('my.profile');
+Route::put('profile','my\profileController@update')->name('my.profile.update');
 Route::get('setting','my\settingController@index')->name('my.setting');
 
 Route::get('/home', 'HomeController@index')->name('home');

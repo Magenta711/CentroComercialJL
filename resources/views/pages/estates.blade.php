@@ -13,6 +13,9 @@
         if ($type == "Twiter"){
             return "twitter"; //fab
         }
+        if ($type == "YouTube"){
+            return "youtube"; //fab
+        }
         if ($type == "LinkedIn"){
             return "linkedin-in"; //fab
         }
@@ -54,7 +57,7 @@
                         <p>Puedes encontrar a {{$id->brand}} en:</p>
                         <h4>
                             @foreach ($id->social_medias as $item)
-                                <a class="mx-2" target="_blank" href="{{$item->link}}"><i class="fab fa-{{type_social($item->type)}}"></i></a>
+                                <a class="mx-2" class="btn btn-circle btn-danger" target="_blank" href="{{$item->link}}"><i class="fab fa-{{type_social($item->type)}}"></i></a>
                             @endforeach
                         </h4>
                     @endif

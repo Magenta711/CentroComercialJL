@@ -2,7 +2,7 @@
     function type_social($type)
     {
         if ($type == "Fecebook"){
-            return "facebook"; //fab
+            return "facebook-f"; //fab
         }
         if ($type == "Instagram"){
             return "instagram"; //fab
@@ -12,6 +12,9 @@
         }
         if ($type == "Twiter"){
             return "twitter"; //fab
+        }
+        if ($type == "YouTube"){
+            return "youtube"; //fab
         }
         if ($type == "LinkedIn"){
             return "linkedin-in"; //fab

@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label for="ubications">Redes sociales</label><br>
                     @foreach ($id->social_medias as $item)
-                        <a target="_blank" href="{{$item->link}}"><i class="fab fa-{{type_social($item->type)}}"></i></a>
+                        <a target="_blank" class="btn btn-circle btn-secondary" href="{{$item->link}}"><i class="fab fa-{{type_social($item->type)}}"></i></a>
                     @endforeach
                 </div>
             </div>
