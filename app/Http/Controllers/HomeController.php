@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Local;
+use App\Models\Pages\Slider;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -28,6 +29,7 @@ class HomeController extends Controller
     {
         $locals = Local::where('status',1)->count();
         $users = User::where('status',1)->count();
-        return view('home',compact('locals','users'));
+        $sliders = Slider::get();
+        return view('home',compact('locals','users','sliders'));
     }
 }

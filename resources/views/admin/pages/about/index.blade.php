@@ -25,13 +25,15 @@
             {!! $id->about !!}
         </div>
     </div>
-    <div class="card-footer" style="display: none;">
-        <form action="{{route('admin_about.store')}}" method="POST" id="form">
-            @csrf
-            <textarea name="text" id="textarea" class="hide"></textarea>
-            <button id="save" class="btn btn-success btn-rounded" type="button">Guardar</button>
-        </form>
-    </div>
+    @can('Editar contenido de pagina nosotros')
+        <div class="card-footer" style="display: none;">
+            <form action="{{route('admin_about.store')}}" method="POST" id="form">
+                @csrf
+                <textarea name="text" id="textarea" class="hide"></textarea>
+                <button id="save" class="btn btn-success btn-rounded" type="button">Guardar</button>
+            </form>
+        </div>
+    @endcan
 </div>
 @endsection
 @section('css')
@@ -42,9 +44,11 @@
 <script src="{{asset('eliteadmin/assets/node_modules/summernote/dist/summernote-bs4.min.js')}}"></script>
 <script>
     $(function() {
-        $('.inline-editor').summernote({
-            airMode: true
-        });
+        @can('Editar contenido de pagina nosotros')
+            $('.inline-editor').summernote({
+                airMode: true
+            });
+        @endcan
         $('.note-editor').click(function () {
             $('#save').parent().parent().show();
         });

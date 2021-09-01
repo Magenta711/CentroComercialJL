@@ -10,7 +10,7 @@
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
-                <li class="breadcrumb-item active">Administración de formularios</li>x
+                <li class="breadcrumb-item active">Administración de formularios</li>
             </ol>
         </div>
     </div>
@@ -43,10 +43,14 @@
                             <td>{{$item->tel}}</td>
                             <td>{{$item->created_at}}</td>
                             <td>
-                                <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#edit-user-modal-{{$item->id}}"><i class="fa fa-check"></i></button>
-                                <a href="#" id="idItem-{{$item->id}}" class="btn btn-sm btn-primary delete-modal">
-                                    <i class="fa fa-trash"></i>
-                                </a>
+                                @can('Ver mensajes de formularios')
+                                    <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#edit-user-modal-{{$item->id}}"><i class="fa fa-check"></i></button>
+                                @endcan
+                                @can('Dar aprobación a mensajes de formularios')
+                                    <a href="#" id="idItem-{{$item->id}}" class="btn btn-sm btn-primary delete-modal">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

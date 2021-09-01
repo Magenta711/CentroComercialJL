@@ -12,8 +12,9 @@
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
                 <li class="breadcrumb-item active">Administración de espacios publicitarios</li>
             </ol>
-            <a href="{{route('admin.publicity_place.create')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Crear
-            </a>
+            @can('Crear espacios publicitarios')
+                <a href="{{route('admin.publicity_place.create')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Crear</a>
+            @endcan
         </div>
     </div>
 </div>
@@ -29,28 +30,36 @@
                     <div class="el-card-avatar el-overlay-1"> <img src="{{asset('storage/avatar/publicity_place/'.$item->avatar)}}" alt="user" />
                         <div class="el-overlay">
                             <ul class="el-info">
-                                <li>
-                                    <a href="{{route('admin.publicity_place.show',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('admin.publicity_place.edit',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                </li>
-                                @if ($item->status)
+                                @can('Ver espacios publicitarios')
                                     <li>
-                                        <a href="{{route('admin.publicity_place.add',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
-                                            <i class="fa fa-image"></i>
+                                        <a href="{{route('admin.publicity_place.show',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                            <i class="fa fa-eye"></i>
                                         </a>
                                     </li>
+                                @endcan
+                                @can('Editar espacios publicitarios')
+                                    <li>
+                                        <a href="{{route('admin.publicity_place.edit',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @if ($item->status)
+                                    @can('Rentar espacios publicitarios')    
+                                        <li>
+                                            <a href="{{route('admin.publicity_place.add',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                                <i class="fa fa-image"></i>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('Eliminar espacios publicitarios')
+                                        <li>
+                                            <a id="idItem-{{$item->id}}" class="btn default btn-outline image-popup-vertical-fit delete-modal">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </li>
+                                    @endcan
                                 @endif
-                                <li>
-                                    <a id="idItem-{{$item->id}}" class="btn default btn-outline image-popup-vertical-fit delete-modal">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </div>

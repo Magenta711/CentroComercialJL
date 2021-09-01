@@ -3,7 +3,7 @@ $(document).ready(function() {
         $('#myTable').DataTable( {
             order: [[ 0, 'asc' ]],
             select: true,
-            lengthMenu: [ [15, 30, 50, -1], [15, 30, 50, "Todos"] ],
+            lengthMenu: [ [10, 30, 50, -1], [10, 30, 50, "Todos"] ],
             pagingType: 'full_numbers',
             language: {
                 lengthMenu:       "Mostrar _MENU_ entradas",

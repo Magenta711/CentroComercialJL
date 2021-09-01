@@ -13,9 +13,11 @@
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Administración de usuarios</a></li>
                 <li class="breadcrumb-item active">Roles y permisos</li>
             </ol>
-            <button type="button" class="btn btn-info d-none d-lg-block m-l-15" alt="default" data-toggle="modal" data-target="#create-role-modal"><i class="fa fa-plus-circle"></i> Crear
-            </button>
-            @include('admin.user.role.includes.modals.create')
+            @can('Crear roles')
+                <button type="button" class="btn btn-info d-none d-lg-block m-l-15" alt="default" data-toggle="modal" data-target="#create-role-modal"><i class="fa fa-plus-circle"></i> Crear
+                </button>
+                @include('admin.user.role.includes.modals.create')
+            @endcan
         </div>
     </div>
 </div>
@@ -24,13 +26,6 @@
     <div class="card-body">
         <h4 class="card-title">Roles</h4>
         <h6 class="card-subtitle">Lista de roles</h6>
-        <p>
-            @role('Superadmin')
-                I am a super-admin!
-            @else
-                I am not a super-admin...
-            @endrole
-        </p>
         <div class="table-responsive m-t-40">
             <table id="myTable" class="table table-bordered table-striped">
                 <thead>
@@ -48,10 +43,16 @@
                             <td>{{$item->name}}</td>
                             <td>{{ count($item->permissions) }}</td>
                             <td>
-                                <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#edit-role-modal-{{$item->id}}"><i class="fa fa-edit"></i></button>
-                                @include('admin.user.role.includes.modals.edit')
-                                <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#delete-role-modal-{{$item->id}}"><i class="fa fa-trash"></i></button>
-                                @include('admin.user.role.includes.modals.delete')
+                                @can('Editar roles')
+                                    <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#edit-role-modal-{{$item->id}}"><i class="fa fa-edit"></i></button>
+                                    @include('admin.user.role.includes.modals.edit')
+                                @endcan
+                                @can('Eliminar roles')
+                                    @if ($item->name != 'Superadmin')
+                                        <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#delete-role-modal-{{$item->id}}"><i class="fa fa-trash"></i></button>
+                                        @include('admin.user.role.includes.modals.delete')
+                                    @endif
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

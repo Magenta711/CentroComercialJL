@@ -12,7 +12,6 @@
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
                 <li class="breadcrumb-item active">Administración de rentas</li>
             </ol>
-            <a href="{{route('locals.create')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Crear</a>
         </div>
     </div>
 </div>
@@ -28,31 +27,38 @@
                     <div class="el-card-avatar el-overlay-1"> <img src="{{asset("storage/avatar/locals/".$item->avatar)}}" alt="user" />
                         <div class="el-overlay">
                             <ul class="el-info">
-                                <li>
-                                    <a href="{{route('admin_rents.show',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('admin_rents.edit',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                </li>
-                                @if ($item->status)
+                                @can('Ver rentas')
                                     <li>
-
-                                        <a href="{{route('admin_rents.sudadd',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit" onclick="event.preventDefault();
-                                            document.getElementById('sudadd_{{$item->id}}').submit();"><i class="fas fa-backspace"></i></a>
-                                        <form id="sudadd_{{$item->id}}" action="{{route('admin_rents.sudadd',$item->id)}}" method="post">
-                                            @csrf
-                                            @method('PATCH')
-                                        </form>
-                                    </li>
-                                    <li>
-                                        <a id="idItem-{{$item->id}}" class="btn default btn-outline image-popup-vertical-fit delete-modal">
-                                            <i class="fa fa-trash"></i>
+                                        <a href="{{route('admin_rents.show',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                            <i class="fa fa-eye"></i>
                                         </a>
                                     </li>
+                                @endcan
+                                @can('Editar rentas')
+                                    <li>
+                                        <a href="{{route('admin_rents.edit',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @if ($item->status)
+                                    @can('Dearrendar local')    
+                                        <li>
+                                            <a href="{{route('admin_rents.sudadd',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit" onclick="event.preventDefault();
+                                                document.getElementById('sudadd_{{$item->id}}').submit();"><i class="fas fa-backspace"></i></a>
+                                            <form id="sudadd_{{$item->id}}" action="{{route('admin_rents.sudadd',$item->id)}}" method="post">
+                                                @csrf
+                                                @method('PATCH')
+                                            </form>
+                                        </li>
+                                    @endcan
+                                    @can('Eliminar rentas')
+                                        <li>
+                                            <a id="idItem-{{$item->id}}" class="btn default btn-outline image-popup-vertical-fit delete-modal">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </li>
+                                    @endcan
                                 @endif
                             </ul>
                         </div>

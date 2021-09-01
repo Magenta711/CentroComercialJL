@@ -21,7 +21,7 @@
 <div class="row el-element-overlay">
     <div class="col-md-12">
         <h4 class="card-title">Carusel</h4>
-        <h6 class="card-subtitle m-b-20 text-muted">you can make gallery like this</h6>
+        <h6 class="card-subtitle m-b-20 text-muted">Tu puedes hacer una galeria para el carrusel principal, puedes programar su comienzo y fin de la publicación</h6>
     </div>
     @foreach ($sliders as $item)
         <div class="col-lg-3 col-md-6">

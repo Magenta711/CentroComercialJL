@@ -39,6 +39,7 @@
     <script src="{{asset('eliteadmin/inverse/dist/js/sidebarmenu.js')}}"></script>
     <script src="{{asset('eliteadmin/inverse/dist/js/custom.min.js')}}"></script>
     <script src="{{asset('eliteadmin/inverse/dist/js/waves.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
     @include('alerts.main')
     @yield('js')
 </body>

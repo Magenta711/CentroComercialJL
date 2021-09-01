@@ -72,27 +72,19 @@
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                     <!-- Carousel items -->
                     <div class="carousel-inner">
-                        <div class="active carousel-item">
-                            <div class="overlaybg"><img src="{{asset('img/pages/11.JPG')}}" class="img-fluid" /></div>
-                            {{-- <div class="news-content carousel-caption"><span class="label label-danger label-rounded">Primary</span>
-                                <h4>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</h4> <a href="javascript:void(0)">Read More</a></div> --}}
-                        </div>
-                        <div class="carousel-item">
-                            <div class="overlaybg"><img src="{{asset('img/pages/22.JPG')}}" /></div>
-                            {{-- <div class="news-content carousel-caption"><span class="label label-primary label-rounded">Primary</span>
-                                <h4>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</h4> <a href="javascript:void(0)">Read More</a></div> --}}
-                        </div>
-                        <div class="carousel-item">
-                            <div class="overlaybg"><img src="{{asset('img/pages/3.jpg')}}" /></div>
-                            {{-- <div class="news-content carousel-caption"><span class="label label-success label-rounded">Primary</span>
-                                <h4>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</h4> <a href="javascript:void(0)">Read More</a></div> --}}
-                        </div>
+                        @foreach ($sliders as $item)
+                            <div class="{{$item->active == 1 ? 'active' : ''}} carousel-item">
+                                <div class="overlaybg"><img src="{{$item->file->url}}/{{$item->file->name}}" class="img-fluid" /></div>
+                                {{-- <div class="news-content carousel-caption"><span class="label label-danger label-rounded">Primary</span>
+                                    <h4>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</h4> <a href="javascript:void(0)">Read More</a></div> --}}
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <!-- Column -->
         <div class="col-lg-12">
             <div class="card">
@@ -124,7 +116,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 
 @section('css')

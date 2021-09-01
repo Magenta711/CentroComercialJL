@@ -12,7 +12,9 @@
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
                 <li class="breadcrumb-item active">Administración de locales</li>
             </ol>
-            <a href="{{route('locals.create')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Crear</a>
+            @can('Crear locales')
+                <a href="{{route('locals.create')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Crear</a>
+            @endcan
         </div>
     </div>
 </div>
@@ -28,33 +30,41 @@
                     <div class="el-card-avatar el-overlay-1"> <img src="{{asset('eliteadmin/assets/images/big/img1.jpg')}}" alt="user" />
                         <div class="el-overlay">
                             <ul class="el-info">
-                                <li>
-                                    <a href="{{route('locals.show',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('locals.edit',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                </li>
+                                @can('Ver locales')
+                                    <li>
+                                        <a href="{{route('locals.show',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('Editar locales')
+                                    <li>
+                                        <a href="{{route('locals.edit',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </li>
+                                @endcan
                                 @if ($item->status)
-                                    <li>
-                                        <a href="{{route('locals.add',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
-                                            <i class="fa fa-key"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a id="idItem-{{$item->id}}" class="btn default btn-outline image-popup-vertical-fit delete-modal">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </li>
+                                    @can('Rentar locales')
+                                        <li>
+                                            <a href="{{route('locals.add',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                                <i class="fa fa-key"></i>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('Eliminar locales')
+                                        <li>
+                                            <a id="idItem-{{$item->id}}" class="btn default btn-outline image-popup-vertical-fit delete-modal">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </li>
+                                    @endcan
                                 @endif
                             </ul>
                         </div>
                     </div>
                     <div class="el-card-content">
-                        <h3 class="box-title">{{$item->type == 'office' ? 'Officina' : 'Local' }} {{$item->code}}</h3>
+                        <h3 class="box-title">{{$item->type == 'office' ? 'Oficina' : 'Local' }} {{$item->code}}</h3>
                         <span class="badge badge-pill {{$item->status ? 'badge-cyan' : 'badge-primary'}}">{{$item->status ? 'Disponible' : 'Arrendado'}}</span>
                     </div>
                 </div>

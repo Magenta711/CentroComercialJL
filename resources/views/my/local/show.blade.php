@@ -81,7 +81,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="type">Tipo</label>
-                    <p>{{$id->local->type == 'office' ? 'Officina' : 'Local' }}</p>
+                    <p>{{$id->local->type == 'office' ? 'Oficina' : 'Local' }}</p>
                 </div>
             </div>
             <div class="col-md-12">
