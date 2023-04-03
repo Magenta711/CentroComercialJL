@@ -38,6 +38,7 @@
         })
     </script>
 @endif
+
 @if (count($errors) > 0)
     @php
         $message = '<ul>';
@@ -57,6 +58,26 @@
             title: '<strong>Alerta!</strong>',
             icon: 'error',
             html: '{!!$message!!}'
+        })
+    </script>
+@endif
+
+@if (session('resent'))
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        Toast.fire({
+            icon: 'success',
+            title: '{{ __('A fresh verification link has been sent to your email address.') }}'
         })
     </script>
 @endif

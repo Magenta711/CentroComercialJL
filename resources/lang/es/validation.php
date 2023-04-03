@@ -150,6 +150,9 @@ return [
         'name' => 'nombre',
         'email' => 'correo electrónico',
         'password' => 'contraseña',
-        'type' => 'Tipo',
+        'type' => 'tipo',
+        'title' => 'título',
+        'startdate' => 'fecha de inicio',
+        'file' => 'archivo',
     ],
 ];

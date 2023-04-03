@@ -20,55 +20,70 @@
     <div class="card-body">
         <div class="card-title">Crear local</div>
         <h6 class="card-subtitle">Todos los campos con * son obligatorios</h6>
+        <form action="{{route('locals.store')}}" method="post" id="form-main">
+            @csrf
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="">Piso</label>
-                    <input type="text" name="" id="" class="form-control">
+                    <label for="ubication">Ubicación *</label>
+                    <input type="text" name="ubication" id="ubication" value="{{old('ubication')}}" class="form-control">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="">Numero</label>
-                    <input type="text" name="" id="" class="form-control">
+                    <label for="code">Código *</label>
+                    <input type="text" name="code" id="code" value="{{old('code')}}" class="form-control">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="">Dimeciones</label>
-                    <input type="text" name="" id="" class="form-control">
+                    <label for="dimensions">Dimeciones *</label>
+                    <input type="text" name="dimensions" id="dimensions" value="{{old('dimensions')}}" class="form-control">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="">Arrendatario</label>
-                    <select name="user_id" id="user_id" class="form-control">
-                        <option selected disabled></option>
+                    <label for="value">Valor *</label>
+                    <input type="text" name="value" id="value" value="{{old('value')}}" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="type">Tipo *</label>
+                    <select name="type" id="type" class="form-control">
+                        <option selected></option>
+                        <option {{old('type') == 'office' ? 'selected' : ''}} value="office">Oficina</option>
+                        <option {{old('type') == 'local' ? 'selected' : ''}} value="local">Local</option>
                     </select>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="">Valor</label>
-                    <input type="text" name="" id="" class="form-control">
+                    <label for="publish">
+                        <input type="checkbox" name="publish" id="publish" value="1" {{ old('publish') ? 'checked' : '' }}>
+                        Pagina de locales
+                    </label>
+                    <br>
+                    <small>Cuando el local este disponible se ofertara en el listado de locales disponibles</small>
                 </div>
             </div>
             <div class="col-md-12">
-                <form action="#" class="dropzone">
-                    <div class="fallback">
-                        <input name="file" type="file" multiple />
-                    </div>
-                </form>
+                <label for="description">Descripción *</label>
+                <textarea name="description" id="description" cols="30" rows="3" class="form-control">{{old('description')}}</textarea>
             </div>
         </div>
+        </form>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-sm btn-primary btn-send">Guardar</button>
     </div>
 </div>
 @endsection
 
-@section('css')
-    <link href="{{asset('eliteadmin/assets/node_modules/dropzone-master/dist/dropzone.css')}}" rel="stylesheet" type="text/css" />
-@endsection
-
 @section('js')
-    <script src="{{asset('eliteadmin/assets/node_modules/dropzone-master/dist/dropzone.js')}}"></script>
+    <script>
+        $('.btn-send').click(function () {
+            $('#form-main').submit();
+        });
+    </script>
 @endsection

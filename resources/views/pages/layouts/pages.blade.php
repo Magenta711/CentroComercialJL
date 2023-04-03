@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/pages/style.css')}}">
     <!-- <link rel="stylesheet" href="{{asset('css/pages/store.css')}}"> -->
+
+    @yield('css')
 </head>
 <body id="page-top">
     @yield('content')
@@ -20,5 +22,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 <script src="{{asset('js/pages/main.js')}}"></script>
+
+    @yield('js')
 </body>
 <html>

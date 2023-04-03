@@ -23,7 +23,7 @@
                             <h5 class="card-title">USUARIOS</h5>
                             <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                 <span class="display-5 text-info"><i class="icon-people"></i></span>
-                                <a href="javscript:void(0)" class="link display-5 ml-auto">23</a>
+                                <a href="javscript:void(0)" class="link display-5 ml-auto">{{$users}}</a>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                             <h5 class="card-title">LOCALES DISPONIBLES</h5>
                             <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                 <span class="display-5 text-purple"><i class="icon-folder"></i></span>
-                                <a href="javscript:void(0)" class="link display-5 ml-auto">6</a>
+                                <a href="javscript:void(0)" class="link display-5 ml-auto">{{$locals}}</a>
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                             <h5 class="card-title">SALON DE EVENTOS</h5>
                             <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                 <span class="display-5 text-primary"><i class="icon-folder-alt"></i></span>
-                                <a href="javscript:void(0)" class="link display-5 ml-auto">311</a>
+                                <a href="javscript:void(0)" class="link display-5 ml-auto">0</a>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                             <h5 class="card-title">TOTAL DE VISITAS</h5>
                             <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                 <span class="display-5 text-success"><i class="icon-wallet"></i></span>
-                                <a href="javscript:void(0)" class="link display-5 ml-auto">2117</a>
+                                <a href="javscript:void(0)" class="link display-5 ml-auto">0</a>
                             </div>
                         </div>
                     </div>
@@ -72,27 +72,19 @@
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                     <!-- Carousel items -->
                     <div class="carousel-inner">
-                        <div class="active carousel-item">
-                            <div class="overlaybg"><img src="{{asset('img/pages/11.jpg')}}" class="img-fluid" /></div>
-                            {{-- <div class="news-content carousel-caption"><span class="label label-danger label-rounded">Primary</span>
-                                <h4>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</h4> <a href="javascript:void(0)">Read More</a></div> --}}
-                        </div>
-                        <div class="carousel-item">
-                            <div class="overlaybg"><img src="{{asset('img/pages/22.jpg')}}" /></div>
-                            {{-- <div class="news-content carousel-caption"><span class="label label-primary label-rounded">Primary</span>
-                                <h4>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</h4> <a href="javascript:void(0)">Read More</a></div> --}}
-                        </div>
-                        <div class="carousel-item">
-                            <div class="overlaybg"><img src="{{asset('img/pages/3.jpg')}}" /></div>
-                            {{-- <div class="news-content carousel-caption"><span class="label label-success label-rounded">Primary</span>
-                                <h4>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</h4> <a href="javascript:void(0)">Read More</a></div> --}}
-                        </div>
+                        @foreach ($sliders as $item)
+                            <div class="{{$item->active == 1 ? 'active' : ''}} carousel-item">
+                                <div class="overlaybg"><img src="{{$item->file->url}}/{{$item->file->name}}" class="img-fluid" /></div>
+                                {{-- <div class="news-content carousel-caption"><span class="label label-danger label-rounded">Primary</span>
+                                    <h4>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</h4> <a href="javascript:void(0)">Read More</a></div> --}}
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <!-- Column -->
         <div class="col-lg-12">
             <div class="card">
@@ -124,10 +116,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 
 @section('css')
+    <link href="{{asset('eliteadmin/inverse/dist/css/pages/dashboard3.css')}}" rel="stylesheet">
     <link href="{{asset('eliteadmin/assets/node_modules/morrisjs/morris.css')}}" rel="stylesheet">
 @endsection
 @section('js')

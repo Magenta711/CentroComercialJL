@@ -12,9 +12,10 @@
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
                 <li class="breadcrumb-item active">Administración de usuarios</li>
             </ol>
-            <button type="button" class="btn btn-info d-none d-lg-block m-l-15" alt="default" data-toggle="modal" data-target="#create-user-modal"><i class="fa fa-plus-circle"></i> Crear
-            </button>
-            @include('admin.user.includes.modals.create')
+            @can('Crear usuarios')
+                <button type="button" class="btn btn-info d-none d-lg-block m-l-15" alt="default" data-toggle="modal" data-target="#create-user-modal"><i class="fa fa-plus-circle"></i> Crear</button>
+                @include('admin.user.includes.modals.create')
+            @endcan
         </div>
     </div>
 </div>
@@ -30,7 +31,7 @@
                         <th>Id</th>
                         <th>Nombre</th>
                         <th>Correo</th>
-                        <th>Tipo</th>
+                        <th>Rol</th>
                         <th>Fecha confirmación</th>
                         <th>/</th>
                     </tr>
@@ -42,16 +43,21 @@
                             <td>{{$item->name}}</td>
                             <td>{{$item->email}}</td>
                             <td>
-                                <span class="badge badge-pill {{$item->type == 'admin' ? 'badge-cyan' : 'badge-primary'}}  text-white ml-auto">
-                                    {{$item->type == 'admin' ? 'Administrador' : 'Rendatario'}}
-                                </span>
+                                @foreach ($item->getRoleNames() as $role)
+                                    <span class="badge badge-pill badge-primary  text-white ml-auto">
+                                        {{$role}}
+                                    </span>
+                                @endforeach
                             </td>
                             <td>{{$item->email_verified_at}}</td>
                             <td>
-                                <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#edit-user-modal-{{$item->id}}"><i class="fa fa-edit"></i></button>
-                                @include('admin.user.includes.modals.edit')
-                                <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#delete-user-modal"><i class="fa fa-trash"></i></button>
-                                @include('admin.user.includes.modals.delete')
+                                @can('Editar usuarios')
+                                    <button type="button" class="btn btn-sm btn-primary" alt="default" data-toggle="modal" data-target="#edit-user-modal-{{$item->id}}"><i class="fa fa-edit"></i></button>
+                                    @include('admin.user.includes.modals.edit')
+                                @endcan
+                                @can('Eliminar usuarios')
+                                    <button type="button" id="idItem-{{$item->id}}" class="btn btn-sm btn-primary delete-modal"><i class="fa fa-trash"></i></button>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach
@@ -64,60 +70,49 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('eliteadmin/assets/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('eliteadmin/assets/node_modules/datatables.net-bs4/css/responsive.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('eliteadmin/assets/node_modules/select2/dist/css/select2.min.css')}}">
 @endsection
 
 @section('js')
     <script src="{{asset('eliteadmin/assets/node_modules/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('eliteadmin/assets/node_modules/datatables.net-bs4/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('eliteadmin/assets/node_modules/select2/dist/js/select2.full.min.js')}}"></script>
     <script>
         $(function () {
-            $('#myTable').DataTable();
-            var table = $('#example').DataTable({
-                "columnDefs": [{
-                    "visible": false,
-                    "targets": 2
-                }],
-                "order": [
-                    [2, 'asc']
-                ],
-                "displayLength": 25,
-                "drawCallback": function (settings) {
-                    var api = this.api();
-                    var rows = api.rows({
-                        page: 'current'
-                    }).nodes();
-                    var last = null;
-                    api.column(2, {
-                        page: 'current'
-                    }).data().each(function (group, i) {
-                        if (last !== group) {
-                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
-                            last = group;
-                        }
-                    });
+            $(".select2").select2();
+            
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            // Order by the grouping
-            $('#example tbody').on('click', 'tr.group', function () {
-                var currentOrder = table.order()[0];
-                if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
-                    table.order([2, 'desc']).draw();
-                } else {
-                    table.order([2, 'asc']).draw();
-                }
+            $('.delete-modal').click(function () {
+                let id = this.id.split('-')[this.id.split('-').length - 1];
+                Swal.fire({
+                    title: '¿Está seguro?',
+                    text: "¡Si elimina el usuario no prodrás revertirlo!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Eliminar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.value) {
+                        $('#idItem-'+id).parent().parent().remove();
+                        var jqxhr = $.post('/usuarios/'+id, function name(data) {
+                            Swal.fire(
+                                'Eliminado!',
+                                'El usuario ha sido eliminado',
+                                'success'
+                            )
+                        })
+                        .fail(function() {
+                            alert( "error" );
+                        });
+                    }
+                });
             });
-            // responsive table
-            $('#config-table').DataTable({
-                responsive: true
-            });
-            $('#example23').DataTable({
-                dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ]
-            });
-            $('.buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel').addClass('btn btn-primary mr-1');
         });
-
     </script>
 @endsection

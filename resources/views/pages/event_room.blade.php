@@ -6,7 +6,7 @@
             <div class="navbar-nav">
                 <a class="nav-link" href="{{route('pages')}}">INICIO</a>
                 <span class="navbar-text">
-                    <i class="fas fa-angle-double-right"></i> 
+                    <i class="fas fa-angle-double-right"></i>
                 </span>
                 <a class="nav-link active disabled" href="#">SALON DE EVENTOS</a>
             </div>
@@ -101,7 +101,69 @@
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque ratione odio temporibus, magni laborum repellat beatae est eos culpa, aliquam ipsam quia pariatur, ullam quae nisi at! Inventore, odit repudiandae?
                     </p>
+                    <button type="button" id="reserva" class="btn btn-sm btn-success reserva-modal" alt="default" data-toggle="modal" data-target="#reserva-modal">Reserva</button>
                 </div>
+
+
+
+                <div id="reserva-modal" class="modal fade" tabindex="-1" role="dialog"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-body">
+                            <div class="text-center">
+                                    <span><img class="me-4" src="img/logo-min.png"
+                                            alt="" height="100px">
+                                    <h4>Reservas</h4>
+                            </div>
+
+                            <form class="ps-3 pe-3" action="{{route('event_room_store')}}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="username">Nombre</label>
+                                    <input class="form-control" type="text" name="namereserva" id="username"
+                                        required="">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="emailaddress">Correo Electrónico</label>
+                                    <input class="form-control" type="email" name="emailreserva" id="emailaddress"
+                                        required=""">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">Teléfono</label>
+                                    <input class="form-control" type="number" name="telefonoreserva" required=""
+                                        id="telefono">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">Fecha de Reserva</label>
+                                    <input class="form-control" type="date" name="fechareserva" required=""
+                                        id="fecha">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">Descripción del evento:</label>
+                                    <textarea name="descripcionreserva" class="form-control" id="descripcion" cols="5" rows="1"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                        <a><small>Después de hacer la reserva, nos comunicaremos contigo para poder realizar la cotización.</a></small>
+                                </div>
+
+                                <div class="form-group text-center">
+                                    <button class="btn btn-primary" type="submit">Reservar</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
             </div>
         </section>
     </div>

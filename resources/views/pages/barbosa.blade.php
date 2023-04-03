@@ -6,11 +6,18 @@
             <div class="navbar-nav">
                 <a class="nav-link" href="{{route('pages')}}">INICIO</a>
                 <span class="navbar-text">
-                    <i class="fas fa-angle-double-right"></i> 
+                    <i class="fas fa-angle-double-right"></i>
                 </span>
                 <a class="nav-link active disabled" href="#">BARBOSA</a>
             </div>
         </nav>
+    </div>
+    <div id="about">
+        <section class="container">
+            <div class="jumbotron">
+                {!! $id->about !!}
+              </div>
+        </section>
     </div>
     @include('pages.layouts.contact-form')
 @endsection

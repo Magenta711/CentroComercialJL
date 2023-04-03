@@ -10,34 +10,109 @@
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
-                <li class="breadcrumb-item active">Administración de Locales</li>
+                <li class="breadcrumb-item active">Administración de locales</li>
             </ol>
-            <a href="{{route('locals.create')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Crear
-            </a>
+            @can('Crear locales')
+                <a href="{{route('locals.create')}}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Crear</a>
+            @endcan
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row el-element-overlay">
     <div class="col-sm-12">
         <h4 class="card-title">Locales</h4>
         <h6 class="card-subtitle">Lista de locales</h6>
     </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="card">
-            <img class="card-img-top img-responsive" src="{{asset('eliteadmin/assets/images/big/img1.jpg')}}" alt="Card image cap">
-            <div class="card-img-overlay">
-                <h5 class="card-title bg-secondary rounded text-center">Arrendado</h5>
-            </div>
-            <div class="card-body">
-                <h4 class="card-title text-center">Local 101</h4>
-                <div class="text-center">
-                    <a href="#" class="btn waves-effect waves-light btn-outline-primary"><i class="fa fa-eye"></i></a>
-                    <a href="#" class="btn waves-effect waves-light btn-outline-success"><i class="fa fa-edit"></i></a>
-                    <a href="#" class="btn waves-effect waves-light btn-outline-warning"><i class="fa fa-key"></i></a>
-                    <a href="#" class="btn waves-effect waves-light btn-outline-danger"><i class="fa fa-trash"></i></a>
+    @foreach ($locals as $item)
+        <div class="col-lg-3 col-md-6">
+            <div class="card">
+                <div class="el-card-item">
+                    <div class="el-card-avatar el-overlay-1"> <img src="{{isset($item->files[0]) ? $item->files[0]->url.$item->files[0]->name : '/img/logo.jpg'}}" alt="user" />
+                        <div class="el-overlay">
+                            <ul class="el-info">
+                                @can('Ver locales')
+                                    <li>
+                                        <a href="{{route('locals.show',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('Editar locales')
+                                    <li>
+                                        <a href="{{route('locals.edit',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @if ($item->status)
+                                    @can('Rentar locales')
+                                        <li>
+                                            <a href="{{route('locals.add',$item->id)}}" class="btn default btn-outline image-popup-vertical-fit">
+                                                <i class="fa fa-key"></i>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('Eliminar locales')
+                                        @if (!$item->rents || count($item->rents) == 0)
+                                            <li>
+                                                <a id="idItem-{{$item->id}}" class="btn default btn-outline image-popup-vertical-fit delete-modal">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endcan
+                                @endif
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="el-card-content">
+                        <h3 class="box-title">{{$item->type == 'office' ? 'Oficina' : 'Local' }} {{$item->code}}</h3>
+                        <span class="badge badge-pill {{$item->is_page ? 'badge-cyan' : 'badge-primary'}}">{{$item->is_page ? 'Disponible' : 'Arrendado'}}</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endforeach
 </div>
+@endsection
+
+@section('css')
+    <link href="{{asset('eliteadmin/inverse/dist/css/pages/user-card.css')}}" rel="stylesheet">
+@endsection
+
+@section('js')
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('.delete-modal').click(function () {
+        let id = this.id.split('-')[this.id.split('-').length - 1];
+        Swal.fire({
+            title: '¿Está seguro?',
+            text: "¡Si elimina el local no prodrás revertirlo!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.value) {
+                    $('#idItem-'+id).parent().parent().parent().parent().parent().parent().parent().remove();
+                var jqxhr = $.post('/admin/servicios/locales/'+id, function name(data) {
+                    Swal.fire(
+                        'Eliminado!',
+                        'El local ha sido eliminado',
+                        'success'
+                    )
+                })
+                .fail(function() {
+                    alert( "error" );
+                });
+            }
+        })
+    });
+</script>
 @endsection

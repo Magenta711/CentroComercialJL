@@ -2,76 +2,48 @@
 @section('content')
     @include('pages.layouts.nav')
     @include('pages.layouts.header')
-    
+
     <div id="about">
         <section class="container">
             <div class="jumbotron">
-                <h1 class="display-4 text-blue-dark text-center">CENTRO COMERCIAL JOSE LUÍS</h1>
+                <h1 class="display-4 text-blue-dark text-center">CENTRO COMERCIAL JOSÉ LUÍS</h1>
                 <p class="lead text-center text-blue-dark">Novedoso y único centro comercial en el municipio de Barbosa Antiquia.</p>
                 <hr class="my-4">
-                <p>Somos el centro comercial de Barbosa desde el 2016 y día a día trabajamos para que nuestros visitantes tengan toda la comodida de realizar tramites y servicios en un mismo lugar.</p>
-                <p>En el centro comercial Jose Luis nuestros comerciantes y visitantes son lo mas importante, tenemos espacios para que emprendas tu negocio en nuestras locales de alquiles, espacios publicitarios para hacer conocer tu marca, servicio de alquiler de auditorio y además espacio en la terraza para sus eventos o reuniones sociales por lo mas alto. No te pierdas la oportunidad de visitarnos.</p>
+                <p>Somos el único centro comercial de Barbosa desde el 2016 y día a día trabajamos para que nuestros visitantes tengan la mejor comodidad para realizar tramites y servicios en un mismo lugar.</p>
+                <p>En el centro comercial José Luís nuestros comerciantes y visitantes son lo mas importante, tenemos espacios para que emprendas tu negocio en nuestros locales de alquiler, espacios publicitarios para hacer conocer tu marca, servicio de alquiler de auditorio y además un espacio en la terraza para tus eventos o reuniones sociales. No te pierdas la oportunidad de visitarnos.</p>
                 <div class="text-center">
                     <a class="btn btn-primary btn-sm" href="{{route('about')}}" role="button">Leer más</a>
                 </div>
               </div>
         </section>
     </div>
-    <div id="estate" class="bg-purple text-white p-3">
-        <section class="container">
-            <h1 class="display-4 text-center">TIENDAS</h1>
-            <p class="text-center">Date el lujo de visitar nuestras tiendas con toda la disposición de atendete, y si fuera poco encuentra en el mismo lugar, donde estudiar o hacer las transaciones que desees ¡Que esperas!</p>
-        </section>
+    @if ($estates)
+        <div class="img-up" style="margin-bottom: -1px">
+            <img id="img_logo_signup" src="{{asset('img/Ups.png')}}" alt="" >
+        </div>
+            <div id="estate" class="bg-purple text-white m-0 p-3">
+                <section class="container">
+                    <h1 class="display-4 text-center">TIENDAS</h1>
+                    <p class="text-center">Date el lujo de visitar nuestras tiendas con toda la disposición de atenderte, y si fuera poco ofrecemos el espacio perfecto para que puedas estudiar o hacer las transaciones que desees. ¡Que esperas!</p>
+                </section>
                 <div class="slider mt-3 mb-3">
                     <div class="slide-track">
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_1.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_2.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_1.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_2.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_1.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_2.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_1.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_2.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_1.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_2.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_1.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_2.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_1.png')}}" width="250" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="{{asset('img/pages/l_img_2.png')}}" width="250" alt="" />
-                        </div>
+                        @foreach ($estates as $item)
+                            <div class="slide">
+                                <img src="{{asset("storage/avatar/locals/".$item->avatar)}}" width="250" alt="" />
+                            </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="text-center">
                     <a class="btn btn-primary btn-sm" href="{{route('estate')}}" role="button">Ver todo</a>
                 </div>
-    </div>
+            </div>
+            <div class="img-up" style="background: white">
+                <img id="img_logo_signup" src="{{asset('img/down.png')}}" alt="" >
+            </div>
+    @endif
+
     <div id="what_do" class="bg-white">
         <section class="container">
             <div class="jumbotron">
@@ -81,10 +53,11 @@
                         <img class="img-thumbnail rounded-circle img-radius m-3" src="{{asset('img/pages/barbosa1.jpg')}}" alt="Barbosa">
                     </div>
                     <div class="col-md-6">
-                        <p class="lead">Barbosa sin duda es un hermoso pueblo a unos cuantos kilometros de Medellín, el ultimo municipio del Area Metropolitana, llegar es tan facil como tomar alimentador del metro.</p>
+                        <p class="lead">Barbosa sin duda es un hermoso pueblo a unos cuantos kilómetros de Medellín, es el último municipio del Área Metropolitana.</p>
+                           <p class="lead">Llegar es tan fácil, solo tienes que tomar el alimentador del metro en la estación Niquía, el cuál te dejará en todo el centro de nuestro municipio.</p>
                         <hr class="my-4">
-                        <p>Vistita Barbosa y encontraras un municipio lleno de cultura, destacable gastronomia, naturaleza, lugares inolvidables y todo el sabor de un pueblo Antioqueño.</p>
-                        <p>Se te puede antojar ir de finca, de camping, caminata al cerro e ir a conocer la zona hurbana de este hermoso municipio municipio.</p>
+                        <p>Se te puede antojar ir de finca, camping, una caminata al cerro o ir a conocer la zona urbana de este hermoso municipio, una experiencia campestre que no olvidarás.</p>
+                        <p>Al visitar Barbosa encontraras un municipio lleno de cultura, destacable gastronomía, hermosa naturaleza, lugares inolvidables y todo el sabor de un pueblo Antioqueño.</p>
                     </div>
                 </div>
                 <div class="text-center">
@@ -98,16 +71,16 @@
             <div class="container p-3">
                 <div class="row">
                     <div class="col-md-6">
-                        <p><i class="fas fa-angle-double-right"></i> Unico centro comercial de Barbosa, nos combierte en punto de referencia comercial del municipio</p>
-                        <p><i class="fas fa-angle-double-right"></i> Un lugar ideal para ir a realizar tus reuniones y encontros sociales en lo mas alto.</p>
-                        <p><i class="fas fa-angle-double-right"></i> El local modernos a la medida de tus necesidades de forma ajil, comoda y segura.</p>
-                        <p><i class="fas fa-angle-double-right"></i> Sin buscar mas, el sitio perfecto para empreder tu negocio</p>
-                        <p><i class="fas fa-angle-double-right"></i> Encuentras variedad de espacios publicitarios ideales para hacerte conocer</p>
-                        <p><i class="fas fa-angle-double-right"></i> Plataformas digitales y sitios web para espadir tus limites</p>
-                        <p><i class="fas fa-angle-double-right"></i> Ampia covertura de horarios para darte mas libertad de escoger tu tiempo</p>
+                        <p><i class="fas fa-angle-double-right"></i> Único centro comercial de Barbosa, lo cual nos convierte en punto de referencia comercial del municipio.</p>
+                        <p><i class="fas fa-angle-double-right"></i> Un lugar ideal para realizar tus reuniones y encuentros sociales en lo mas alto.</p>
+                        <p><i class="fas fa-angle-double-right"></i> Contamos con locales modernos a la medida de tus necesidades de forma ágil, cómoda y segura.</p>
+                        <p><i class="fas fa-angle-double-right"></i> Encontrarás una gran variedad de espacios publicitarios ideales para hacerte conocer.</p>
+                        <p><i class="fas fa-angle-double-right"></i> Plataformas digitales y sitios web para expandir tus límites.</p>
+                        <p><i class="fas fa-angle-double-right"></i> Amplia cobertura de horarios para darte más libertad de escoger tu tiempo.</p>
+                        <p><i class="fas fa-angle-double-right"><strong></i> ¡No busques más, somos el sitio perfecto para que puedas empreder tu negocio!</p></strong>
                     </div>
                     <div class="col-sm-6 p-3 p-3">
-                        <img class="img-radius m-3" src="{{asset('img/pages/mall1.png')}}" alt="mall">
+                        <img class="img-radius m-3" src="{{asset('img/pages/mall1.png')}}" alt="mall" width="100%">
                     </div>
                 </div>
             </div>
@@ -123,7 +96,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title text-white">ESPACIOS PUBLICITARIOS</h5>
                             <!-- <p class="card-text">Variedad de espacios publicitarios para tu marca al precio que puedes pagar.</p> -->
-                            <a href="{{route('publicity_place')}}" class="btn btn-primary">Conocer más</a>
+                            <a href="{{route('publicity_place')}}" class="btn btn-sm btn-primary">Conocer más</a>
                         </div>
                     </div>
                 </div>
@@ -133,7 +106,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title text-white">LOCALES</h5>
                             <!-- <p class="card-text">Excelente espacios comerciales con locales comerciales y oficinas perfecto para tu emprendimiento.</p> -->
-                            <a href="{{route('local')}}" class="btn btn-primary">Ver todo</a>
+                            <a href="{{route('local')}}" class="btn btn-sm btn-primary">Ver todo</a>
                         </div>
                     </div>
                 </div>
@@ -143,7 +116,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title text-white">SALÓN DE EVENTOS</h5>
                             <!-- <p class="card-text">Terraza y salón de eventos para tus fiestas, eventos sociales y reuniones empresariales</p> -->
-                            <a href="{{route('event_room')}}" class="btn btn-primary">Cotizar</a>
+                            <a href="{{route('event_room')}}" class="btn btn-sm btn-primary">Cotizar</a>
                         </div>
                     </div>
                 </div>

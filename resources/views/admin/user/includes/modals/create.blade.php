@@ -22,11 +22,11 @@
                         <input type="text" class="form-control" id="password" name="password" value="{{old('password')}}" placeholder="Contraseña">
                     </div>
                     <div class="form-group">
-                        <label for="type" class="control-label">Tipo de usuario</label>
-                        <select name="type" id="type" class="form-control">
-                            <option disabled selected> Selecciona el tipo de usuario</option>
-                            <option value="admin"> Administrador</option>
-                            <option value="lessee"> Rendatario</option>
+                        <label>Rol</label>
+                        <select name="roles[]" class="select2 m-b-10 select2-multiple" style="width: 100%" multiple="multiple" data-placeholder="Choose">
+                            @foreach ($roles as $role)
+                                <option  value="{{$role->id}}"> {{$role->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

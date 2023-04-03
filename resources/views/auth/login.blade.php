@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/logo-min.png')}}">
-    <title>Elite Admin Template - The Ultimate Multipurpose admin template</title>
+    <title>CCJL | ACCEDER</title>
     
     <!-- page css -->
     <link href="{{asset('eliteadmin/inverse/dist/css/pages/login-register-lock.css')}}" rel="stylesheet">
