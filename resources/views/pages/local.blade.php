@@ -1,12 +1,25 @@
+
 @php
     function colorBg($i)
     {
-        if (2 % $i == 0) {
-            return true;
+
+        switch ($i) {
+            case 1:
+                return "bg-orange";
+                break;
+            case 2:
+                return "bg-purple";
+                break;
+            case 3:
+                return "bg-ping";
+                break;
+            default:
+                return "bg-purple";
+                break;
         }
-        return false;
     }
 @endphp
+
 @extends('pages.layouts.pages')
 @section('content')
     @include('pages.layouts.header-2',['img' => 's_img_62.jpeg'])
@@ -26,11 +39,11 @@
             <h1 class="display-4 text-blue-dark text-center">LOCALES</h1>
             <div class="row justify-content-center">
                 @php
-                    $i = 2;
+                    $i = 1;
                 @endphp
                 @forelse ($locals as $item)
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 p-3">
-                        <div class="card text-center {{colorBg($i) ? 'bg-orange' : 'bg-purple'}} text-white">
+                        <div class="card text-center {{colorBg($i)}} text-white">
                             <img src="{{ (isset($item->files[0])) ? $item->files[0]->url.$item->files[0]->name : '/img/logo.jpg'}}" alt="{{isset($item->files[0]) ? $item->files[0]->name : '' }}" height="175px" width="100%">
                             <div class="card-body">
                                 <h4>{{$item->type == 'office' ? 'Oficina' : 'Local' }} {{$item->code}}</h4>
@@ -50,6 +63,9 @@
                     </div>
                     @php
                         $i++;
+                        if($i > 3){
+                            $i = 1;
+                        }
                     @endphp
                 @empty
                     <p class="text-muted text-center">Sin resultados</p>

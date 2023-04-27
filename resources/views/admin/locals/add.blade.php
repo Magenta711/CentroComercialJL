@@ -55,7 +55,12 @@
                         <label for="category_id">Categoria</label>
                         <select name="category_id" id="category_id" class="form-control">
                             <option selected disabled>Selecciona la categoria</option>
-                            <option value=""></option>
+                            <option value="Comercio">Comercio</option>
+                            <option value="Educación">Educación</option>
+                            <option value="Salud y Bienestar">Salud y Bienestar</option>
+                            <option value="Belleza y Moda">Belleza y Moda</option>
+                            <option value="Comidas y Bebidas">Comidas y Bebidas</option>
+                            <option value="Otra">Otra</option>
                         </select>
                     </div>
                     <div class="form-group">

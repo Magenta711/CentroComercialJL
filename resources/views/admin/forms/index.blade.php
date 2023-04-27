@@ -63,7 +63,7 @@
                         </tr>
                         @include('admin.forms.modals.show_modal')
                     @endforeach
-                    @foreach ($event_room as $events)
+                    {{-- @foreach ($event_room as $events)
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>Salón de eventos</td>
@@ -75,7 +75,7 @@
                             <td><button type="button" id="idItemShow-{{$events->id}}" class="btn btn-sm btn-primary show-modal" alt="default" data-toggle="modal" data-target="#pendienteModal-{{$events->id}}"><i class="fa fa-eye"></i></button></td>
                         </tr>
                         @include('admin.forms.modals.pendientes')
-                    @endforeach
+                    @endforeach --}}
                 </tbody>
             </table>
         </div>

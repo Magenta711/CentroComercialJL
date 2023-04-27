@@ -1,4 +1,4 @@
-<div class="img-up">
+<div class="img-up" style="background: white">
     <img id="img_logo_signup" src="{{asset('img/Up.png')}}" alt="" >
 </div>
 <div id="signup" class="bg-purple p-3">

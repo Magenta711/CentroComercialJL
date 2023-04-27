@@ -62,7 +62,7 @@
             $('#btn_add_social_media').click(function () {
                 $('#origen_social_media').clone().appendTo('#destino_social_media').find('input').val('');
             });
-            
+
             Dropzone.options.myAwesomeDropzone = {
                 dictDefaultMessage: 'Carga los archivos aquí o de clic',
                 addRemoveLinks: true,
@@ -82,12 +82,12 @@
                             foreach ($id->files as $key => $value) {
                                 echo "mockFile = { name: '".$value->name."', size: '".$value->size."' };
                                 myDropzone.displayExistingFile(mockFile, '/storage/upload/".$value->name."');
-                                
+
                                 ";
                             }
                         }
                     @endphp
-                    
+
 
                     myDropzone.on("removedfile", function(file) {
                         $url = '/files_load?name='+file.name+'&_token='+$('meta[name="csrf-token"]').attr('content');

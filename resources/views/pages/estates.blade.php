@@ -63,26 +63,26 @@
                             @endforeach
                         </h4>
                     @endif
-                    {{-- <div class="row">
-                        <div class="col-md-12">
-                            <label for="file">Galeria</label>
-                            <div class="card-columns el-element-overlay">
-                                @if ($id->files)
-                                    @foreach ($id->files as $item)
-                                        <div class="card">
-                                            <div class="el-card-item">
-                                                <div class="el-card-avatar el-overlay-1">
-                                                    <a href="{{$item->url.$item->name}}">
-                                                        <img src="{{$item->url.$item->name}}" alt="{{$item->name}}" width="100%" />
-                                                    </a>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="file">Galeria</label>
+                                <div class="card-columns el-element-overlay">
+                                    @if ($id->files)
+                                        @foreach ($id->files as $item)
+                                            <div class="card">
+                                                <div class="el-card-item">
+                                                    <div class="el-card-avatar el-overlay-1">
+                                                        <a href="{{$item->url.$item->name}}">
+                                                            <img src="{{$item->url.$item->name}}" alt="{{$item->name}}" width="100%" />
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endforeach
-                                @endif
+                                        @endforeach
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                    </div> --}}
                     {{-- <p>Productos</p> --}}
                 </div>
                 <div class="col-md-3 text-center">

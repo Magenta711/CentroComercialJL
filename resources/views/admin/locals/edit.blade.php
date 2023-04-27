@@ -77,6 +77,8 @@
         <div class="row">
             <div class="col-md-12">
                 <label for="file">Galeria</label>
+                {{--  Esta es la ruta para guardar los archivos {{route('files.upload',[$id->id,1])}} lo hace con --}}
+                {{--  Dropzone.options.myAwesomeDropzone que es un AJax que llama a --}}
                 <form action="{{route('files.upload',[$id->id,1])}}" class="dropzone" id="myAwesomeDropzone">
                     @csrf
                     <div class="fallback">
@@ -123,7 +125,7 @@
                         }
                     }
                 @endphp
-                
+
 
                 myDropzone.on("removedfile", function(file) {
                     $url = '/files_load?name='+file.name+'&_token='+$('meta[name="csrf-token"]').attr('content');

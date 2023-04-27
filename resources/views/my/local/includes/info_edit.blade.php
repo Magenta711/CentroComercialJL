@@ -9,11 +9,24 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Logo</h4>
-                <label for="input-file-now">En sugerencia subir una imagen con las dimenciones de 2:2 y fondo blanco</label>
+                <label for="input-file-now">En sugerencia subir una imagen con las dimensiones de 2:2 y fondo blanco</label>
                 <input type="file" name="file" id="input-file-now" class="dropify" accept="image/*" data-default-file="/storage/avatar/locals/{{$id->avatar}}" />
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <label for="file">Galeria</label>
+            <form action="{{route('files.upload',[$id->id,4])}}" class="dropzone" id="myAwesomeDropzone">
+                @csrf
+                <div class="fallback">
+                    <input name="file" type="file" multiple />
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="col-lg-6 col-md-6">
         <div class="card">
             <div class="card-body">

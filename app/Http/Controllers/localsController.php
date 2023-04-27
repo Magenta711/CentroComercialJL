@@ -70,9 +70,9 @@ class localsController extends Controller
     }
     public function save(Request $request,Local $id)
     {
-        $request->validate([
-            'user_id' => ['required'],
-        ]);
+        // $request->validate([
+        //     'user_id' => ['required'],
+        // ]);
         if ($request->hasFile('file')){
             $file = $request->file('file');
             $name = time().'.'.$file->getClientOriginalExtension();
@@ -83,7 +83,7 @@ class localsController extends Controller
         }
         $request['local_id'] = $id->id;
         Rent::create($request->all());
-        $id->update([ 
+        $id->update([
             'status' => 0
          ]);
         return redirect()->route('locals')->with('success','Local '.$id->code.' rentado');
